@@ -1,0 +1,57 @@
+"use client";
+
+import { useState } from "react";
+
+export function LoginForm() {
+  const [error, setError] = useState<string | null>(null);
+  const [busy, setBusy] = useState(false);
+
+  async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    setBusy(true);
+    setError(null);
+    const password = new FormData(e.currentTarget).get("password");
+    const res = await fetch("/api/auth/login", {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify({ password }),
+    }).catch(() => null);
+    if (res?.ok) {
+      window.location.assign("/matches");
+      return;
+    }
+    const data = res ? await res.json().catch(() => ({})) : {};
+    setError((data as { error?: string }).error ?? "Could not reach the server.");
+    // Back to the password field, selected, so it can be typed again at once.
+    const field = document.querySelector<HTMLInputElement>('input[name="password"]');
+    field?.focus();
+    field?.select();
+    setBusy(false);
+  }
+
+  return (
+    <form className="stack" onSubmit={onSubmit}>
+      <label className="field">
+        <span className="field-label">Password</span>
+        <input
+          className="input"
+          name="password"
+          type="password"
+          autoComplete="current-password"
+          placeholder="••••••••••"
+          required
+          autoFocus
+        />
+      </label>
+      {error && (
+        <p role="alert" className="small" style={{ color: "var(--bad)" }}>
+          {error}
+        </p>
+      )}
+      <button className="btn btn-primary btn-lg" type="submit" disabled={busy}>
+        {busy ? <span className="spinner" aria-hidden="true" /> : null}
+        Sign in
+      </button>
+    </form>
+  );
+}
