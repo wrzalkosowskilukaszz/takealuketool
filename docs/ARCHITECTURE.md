@@ -6,13 +6,15 @@ One user, one password. Everything runs in the web app plus an hourly cron call.
 ## Layout
 
 ```
-src/app/(app)/        Screens: matches, explore, pipeline, grow, grow/[slug], companies, settings
+src/app/(app)/        Screens: matches, explore, pipeline, cv (new, versions, base, [id]), grow, grow/[slug], companies, settings
 src/app/api/          Route handlers (session-checked by `api()` in src/server/http.ts)
-src/components/       offers/ (cards, panel, letter and CV dialogs), pipeline/, grow/, companies/, settings/
+src/components/       offers/ (cards, panel, letter dialog), cv/, pipeline/, grow/, companies/, settings/
 src/lib/jobs/         Pure rules shared by server and browser: tracks, match, tailor, types, sectors
+src/lib/cv/base.ts    The CV studio's rules: base and CV formats, rule checks (sources, statuses, numbers)
 src/lib/grow/paths.ts The career-path library behind Grow (content and checked links)
 src/server/careers/   sources (feed readers), detect (job boards on company sites), sync, service, digest
 src/server/ai/        client (structured Claude calls), score, letters, advisor
+src/server/cv/        CV studio: prompts (the Kreator's rules), service (base, versions, steps), docx
 src/server/jobs/      tick (the scheduler), lease, budget (spend caps)
 src/server/net/       PoliteFetcher (robots.txt, per-host delays) and httpFetch
 research/companies.json  Suggested companies, loaded with `pnpm companies:import`
@@ -24,7 +26,10 @@ research/companies.json  Suggested companies, loaded with `pnpm companies:import
 - `job_sources`: one row per feed or company job board, with its last read and next due time.
 - `job_offers`: every kept offer: rule match (`match`, `rule_score`, `track`, `field`, `pivot`,
   `figma_share`), Claude's reading (`ai`), the shown `score` (Claude's when present), status and dates,
-  note, cover letter, tailored CV, `digested_at`.
+  note, cover letter, `digested_at`.
+- `cv_base` (one row, the experience base as JSON) and `cv_versions` (one CV per posting: the posting,
+  the analysis, the CV with fact ids, notes and checks, and its stage: new, analyzed, drafted, done, failed).
+  A CV is written in three requests (analyze, draft, verify), so none comes near the function time limit.
 - `saved_views`, `advisor_messages`, `settings` (JSON per key), `provider_usage` (spend ledger),
   `leases`, `host_state` (robots cache), `fetch_log`, `app_events`, `sessions`, `login_attempts`.
 

@@ -3,6 +3,7 @@
 import {
   Building2,
   Compass,
+  FileText,
   KanbanSquare,
   LogOut,
   MoreHorizontal,
@@ -20,7 +21,10 @@ const SEARCH = [
   { href: "/pipeline", label: "Pipeline", icon: KanbanSquare },
 ] as const;
 
-const GROW = [{ href: "/grow", label: "Grow", icon: Sprout }] as const;
+const GROW = [
+  { href: "/cv", label: "CV", icon: FileText },
+  { href: "/grow", label: "Grow", icon: Sprout },
+] as const;
 
 const OTHER = [
   { href: "/companies", label: "Companies", icon: Building2 },
@@ -30,7 +34,7 @@ const OTHER = [
 const ALL = [...SEARCH, ...GROW, ...OTHER];
 // Phone tab bar: four places plus "More", which lists the rest.
 const TABS = [SEARCH[0], SEARCH[1], SEARCH[2], GROW[0]];
-const MORE = [...OTHER];
+const MORE = [GROW[1], ...OTHER];
 
 const isActive = (path: string, href: string) => path === href || path.startsWith(`${href}/`);
 

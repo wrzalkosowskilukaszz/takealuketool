@@ -1,9 +1,9 @@
 import { eq } from "drizzle-orm";
 import { scoreOffer } from "@/server/ai/score";
+import { cvSourceText } from "@/server/cv/service";
 import { db } from "@/server/db/client";
 import { jobOffers } from "@/server/db/schema";
 import { api, badRequest, notFound } from "@/server/http";
-import { getSettings } from "@/server/settings";
 
 export const maxDuration = 60;
 
@@ -21,7 +21,7 @@ export const POST = api<{ id: string }>(async (_req, { params }) => {
     .where(eq(jobOffers.id, params.id))
     .limit(1);
   if (!o) throw notFound("Offer not found");
-  const career = await getSettings("career");
-  if (!career.cvText) throw badRequest("Upload your CV first (Settings → CV).");
-  return { ai: await scoreOffer(o, career.cvText) };
+  const cvText = await cvSourceText();
+  if (!cvText) throw badRequest("Upload your CV (Settings) or import your experience base (CV) first.");
+  return { ai: await scoreOffer(o, cvText) };
 });

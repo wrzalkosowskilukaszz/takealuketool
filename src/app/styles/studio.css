@@ -478,3 +478,297 @@ tr.is-muted td {
 .kanban .tag {
   gap: 4px;
 }
+
+/* ---------------------------------------------------------------------------
+   CV studio
+   ------------------------------------------------------------------------- */
+
+.cv-new {
+  display: grid;
+  grid-template-columns: minmax(0, 1.4fr) minmax(280px, 1fr);
+  gap: var(--space-5);
+  align-items: start;
+}
+.cv-how {
+  margin: 0;
+  padding-left: 18px;
+  display: grid;
+  gap: 6px;
+}
+.cv-steps {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 6px;
+  font-size: var(--text-sm);
+}
+.cv-steps li {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+.cv-steps li[data-state="todo"] {
+  color: var(--text-tertiary);
+}
+.cv-steps li[data-state="err"] > span:first-child {
+  color: var(--bad);
+}
+.cv-steps li[data-state="done"] > span:first-child {
+  color: var(--ok);
+}
+
+.cv-header h1 .secondary {
+  font-weight: var(--weight-medium);
+}
+.cv-toolbar {
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.cv-layout {
+  display: grid;
+  grid-template-columns: minmax(300px, 400px) minmax(0, 1fr);
+  gap: var(--space-5);
+  align-items: start;
+}
+.cv-list {
+  margin: 4px 0 0;
+  padding-left: 18px;
+  display: grid;
+  gap: 4px;
+}
+.cv-issue {
+  border-left: 3px solid var(--warn);
+  background: var(--surface-sunken);
+  border-radius: var(--radius-sm);
+  padding: 8px 10px;
+  display: grid;
+  gap: 4px;
+}
+.cv-issue-high {
+  border-left-color: var(--bad);
+}
+.cv-req {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 4px 10px;
+  align-items: start;
+}
+.cv-req .tag {
+  white-space: nowrap;
+}
+.cv-uncovered {
+  color: var(--text-tertiary);
+  text-decoration: line-through;
+}
+.cv-offer-text {
+  white-space: pre-wrap;
+  max-height: 320px;
+  overflow: auto;
+}
+
+/* The paper: always light, like the printed page. */
+.cv-paper-wrap {
+  overflow-x: auto;
+}
+.cv-paper {
+  background: #fff;
+  color: #111;
+  color-scheme: light;
+  max-width: 820px;
+  margin: 0 auto;
+  padding: 44px 52px;
+  border-radius: var(--radius-sm);
+  box-shadow: var(--shadow-card);
+  font-family: Calibri, Carlito, "Segoe UI", Arial, sans-serif;
+  font-size: 14px;
+  line-height: 1.42;
+}
+.cv-paper p {
+  margin: 0;
+}
+.cv-name {
+  font-size: 26px;
+  font-weight: 700;
+}
+.cv-paper .cv-headline {
+  font-size: 15px;
+  margin: 2px 0 4px;
+}
+.cv-contact {
+  font-size: 13px;
+  color: #333;
+}
+.cv-paper h4 {
+  font-size: 13.5px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin: 18px 0 6px;
+  padding-bottom: 3px;
+  border-bottom: 1px solid #999;
+  font-family: inherit;
+}
+.cv-paper ul {
+  margin: 3px 0 0;
+  padding-left: 18px;
+}
+.cv-paper li {
+  margin: 2px 0;
+}
+.cv-role {
+  margin-top: 10px;
+}
+.cv-role-head {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  font-weight: 700;
+}
+.cv-dates {
+  font-weight: 400;
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+}
+.cv-role-sub {
+  font-size: 13px;
+  color: #444;
+  font-style: italic;
+}
+.cv-edit {
+  outline: none;
+  border-radius: 2px;
+}
+.cv-edit:hover {
+  background: #eef4fc;
+}
+.cv-edit:focus {
+  background: #e3ecf7;
+}
+.cv-edit.flag {
+  background: #fdf1d6;
+}
+.cv-edit.flag-high {
+  background: #fbe0e0;
+}
+.cv-ctl {
+  font-size: 11px;
+  border: 1px solid #ccd;
+  background: #fff;
+  color: #334;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-left: 6px;
+  padding: 0 5px;
+  vertical-align: middle;
+  opacity: 0;
+  transition: opacity var(--duration-fast) var(--ease);
+}
+.cv-role:hover .cv-ctl,
+.cv-ctl:focus-visible {
+  opacity: 1;
+}
+.cv-ctl-add {
+  margin: 4px 0 0;
+}
+.cv-paper-hint {
+  max-width: 820px;
+  margin: 8px auto 0;
+}
+.cv-pick {
+  text-align: left;
+  justify-content: flex-start;
+  white-space: normal;
+  height: auto;
+  padding: 8px 12px;
+}
+
+/* Experience base */
+.cv-fields {
+  gap: 10px 12px;
+}
+.cv-role-block {
+  border: 1px solid var(--separator);
+  border-radius: var(--radius-md);
+  padding: 12px;
+}
+.cv-role-fields {
+  display: grid;
+  grid-template-columns: 2fr 2fr 1.4fr 1fr 1fr 1fr;
+  gap: 8px;
+  align-items: end;
+}
+.cv-fact {
+  display: grid;
+  grid-template-columns: 1fr 150px 160px auto;
+  gap: 8px;
+  align-items: start;
+  padding: 8px;
+  border-radius: var(--radius-sm);
+  border-left: 4px solid var(--ok);
+  background: var(--surface-sunken);
+}
+.cv-fact-to_verify {
+  border-left-color: var(--warn);
+}
+.cv-fact-interpretation {
+  border-left-color: var(--bad);
+}
+.cv-fact .textarea {
+  min-height: 44px;
+  background: var(--surface);
+}
+.cv-fact-src {
+  grid-column: 1 / -1;
+}
+
+@media (max-width: 1000px) {
+  .cv-new,
+  .cv-layout {
+    grid-template-columns: 1fr;
+  }
+  .cv-role-fields {
+    grid-template-columns: 1fr 1fr;
+  }
+  .cv-fact {
+    grid-template-columns: 1fr 1fr;
+  }
+  .cv-fact .textarea {
+    grid-column: 1 / -1;
+  }
+  .cv-paper {
+    padding: 28px 22px;
+  }
+}
+
+/* "PDF (print)": only the paper is printed. */
+@media print {
+  body * {
+    visibility: hidden;
+  }
+  .cv-paper,
+  .cv-paper * {
+    visibility: visible;
+  }
+  .cv-paper {
+    position: absolute;
+    inset: 0 auto auto 0;
+    width: 100%;
+    max-width: none;
+    margin: 0;
+    padding: 0;
+    box-shadow: none;
+  }
+  .cv-ctl,
+  .cv-ctl-add {
+    display: none;
+  }
+  .cv-edit,
+  .cv-edit.flag,
+  .cv-edit.flag-high {
+    background: none;
+  }
+  @page {
+    size: A4;
+    margin: 14mm 15mm;
+  }
+}

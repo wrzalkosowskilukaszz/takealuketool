@@ -6,6 +6,8 @@
  *   optional AI assessment against the CV, its track (core, beyond Figma, adjacent, new field) and the
  *   owner's pipeline status, notes and cover letter.
  * - `advisor_messages`: the Grow tab's advisor chat.
+ * - `cv_base` / `cv_versions`: the CV studio's experience base (facts with a status) and the CVs written
+ *   from it for single offers.
  * - Engine tables: leases (one worker per duty), provider_usage (AI spend ledger), host_state and fetch_log
  *   (polite crawling), app_events (log), settings, sessions, login_attempts.
  */
@@ -194,9 +196,6 @@ export const jobOffers = pgTable(
     coverLetter: text("cover_letter"),
     coverLetterLang: text("cover_letter_lang"),
     coverLetterAt: ts("cover_letter_at"),
-    /** The owner's CV rewritten for this offer. */
-    tailoredCv: text("tailored_cv"),
-    tailoredCvAt: ts("tailored_cv_at"),
     /** When the offer was included in the daily digest (so it is reported once). */
     digestedAt: ts("digested_at"),
     createdAt: createdAt(),
@@ -235,6 +234,42 @@ export const advisorMessages = pgTable(
     createdAt: createdAt(),
   },
   (t) => [index("advisor_messages_thread_idx").on(t.thread, t.createdAt)],
+);
+
+// ---------------------------------------------------------------------------
+// CV studio (ported from the "Kreator CV pod oferty")
+// ---------------------------------------------------------------------------
+
+/** The experience base: one row ("main") holding the whole base as JSON (see src/lib/cv/base.ts). */
+export const cvBase = pgTable("cv_base", {
+  id: text("id").primaryKey(),
+  data: jsonb("data").$type<unknown>().notNull(),
+  updatedAt: updatedAt(),
+});
+
+/** One CV written for one posting: the posting, the analysis, the CV with fact ids, and its checks. */
+export const cvVersions = pgTable(
+  "cv_versions",
+  {
+    id: uuid("id").primaryKey().defaultRandom(),
+    offerId: uuid("offer_id").references(() => jobOffers.id, { onDelete: "set null" }),
+    company: text("company").notNull().default(""),
+    position: text("position").notNull().default(""),
+    language: text("language"),
+    link: text("link"),
+    offerText: text("offer_text").notNull(),
+    /** new → analyzed → drafted → done; "failed" keeps the last error in `error`. */
+    stage: text("stage").notNull().default("new"),
+    error: text("error"),
+    analysis: jsonb("analysis").$type<unknown>(),
+    cv: jsonb("cv").$type<unknown>(),
+    meta: jsonb("meta").$type<{ changes: string[]; gaps: string[]; questions: string[] } | null>(),
+    checks: jsonb("checks").$type<unknown>(),
+    baseUpdatedAt: text("base_updated_at"),
+    createdAt: createdAt(),
+    updatedAt: updatedAt(),
+  },
+  (t) => [index("cv_versions_created_idx").on(t.createdAt), index("cv_versions_offer_idx").on(t.offerId)],
 );
 
 // ---------------------------------------------------------------------------

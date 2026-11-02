@@ -9,6 +9,7 @@
 import { and, desc, eq, gte, isNull, sql } from "drizzle-orm";
 import { DateTime } from "luxon";
 import { z } from "zod";
+import { cvSourceText } from "../cv/service.ts";
 import { db } from "../db/client.ts";
 import { type AiFit, jobOffers } from "../db/schema.ts";
 import { env } from "../env.ts";
@@ -76,7 +77,7 @@ export async function scoreDueOffers(opts: { deadline: number }): Promise<ScoreR
   const report: ScoreReport = { scored: 0, failed: 0, skipped: null };
   if (!aiConfigured()) return { ...report, skipped: "no ANTHROPIC_API_KEY" };
   const s = await getSettings("ai");
-  const career = await getSettings("career");
+  const cvText = await cvSourceText();
   const [{ n: today } = { n: 0 }] = await db()
     .select({ n: sql<number>`count(*)::int` })
     .from(jobOffers)
@@ -104,7 +105,7 @@ export async function scoreDueOffers(opts: { deadline: number }): Promise<ScoreR
     const results = await Promise.all(
       batch.map(async (o) => {
         try {
-          await scoreOffer(o, career.cvText);
+          await scoreOffer(o, cvText);
           return "ok" as const;
         } catch (e) {
           if (e instanceof BudgetExceededError || e instanceof AiNotConfiguredError) throw e;

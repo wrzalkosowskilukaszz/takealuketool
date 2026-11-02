@@ -7,6 +7,7 @@
 import { asc, desc, eq, sql } from "drizzle-orm";
 import { z } from "zod";
 import { CURATED_URLS, PATHS, pathBySlug } from "@/lib/grow/paths";
+import { cvSourceText } from "../cv/service.ts";
 import { db } from "../db/client.ts";
 import { advisorMessages, jobOffers } from "../db/schema.ts";
 import { badRequest } from "../http.ts";
@@ -43,7 +44,6 @@ export async function askAdvisor(thread: string, question: string) {
   if (q.length < 2) throw badRequest("Ask a question first.");
   const path = thread === "general" ? null : pathBySlug(thread);
   if (thread !== "general" && !path) throw badRequest("Unknown career path.");
-  const career = await getSettings("career");
   const grow = await getSettings("grow");
   const history = await db()
     .select()
@@ -92,7 +92,7 @@ ${library}
     .map((m) => `${m.role === "user" ? "Them" : "You"}: ${m.content.slice(0, 1500)}`)
     .join("\n\n");
   const user = `<cv>
-${career.cvText.slice(0, 10_000) || "(no CV uploaded yet)"}
+${(await cvSourceText()).slice(0, 10_000) || "(no CV uploaded yet)"}
 </cv>
 
 ${context}
