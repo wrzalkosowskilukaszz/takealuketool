@@ -25,7 +25,7 @@ import { createPortal } from "react-dom";
 import { useToast } from "@/components/toast";
 import { Callout, Dialog, Empty } from "@/components/ui";
 import { ApiError, apiFetch } from "@/lib/api-client";
-import { REGION_LABEL, type Region } from "@/lib/jobs/match";
+import { AREA_LABEL, AREAS, type Area, REGION_LABEL, type Region } from "@/lib/jobs/match";
 import {
   FIELD_LABEL,
   FIGMA_LABEL,
@@ -54,6 +54,14 @@ const SCREEN_TRACKS: Record<Screen, Track[]> = {
   matches: ["core", "beyond"],
   explore: ["adjacent", "new_field"],
 };
+const AREA_HINT: Record<Area | "all", string> = {
+  pl: "Warsaw, elsewhere in Poland, and remote roles for people in Poland.",
+  eu: "On-site, hybrid and remote roles in the EU, EEA and Switzerland. As a Polish citizen you need no work permit there.",
+  world:
+    "Everywhere else, including the UK and the US. Remote roles open to Poland are marked; on-site roles need a work visa.",
+  all: "Every place together.",
+};
+
 const PLACES = { warsaw: "Warsaw", poland: "Elsewhere in Poland", remote: "Remote" } as const;
 const WORKPLACES = { remote: "Remote", hybrid: "Hybrid", onsite: "On-site", unknown: "Not stated" } as const;
 const FIELDS = Object.keys(FIELD_LABEL) as ExploreField[];
@@ -66,7 +74,10 @@ export function OffersView({ screen }: { screen: Screen }) {
   const toast = useToast();
   const [view, setView] = useState<View>((params.get("view") as View) || "best");
   const [q, setQ] = useState(params.get("q") ?? "");
-  const [filters, setFilters] = useState<Filters>({});
+  const [filters, setFilters] = useState<Filters>(() => {
+    const a = params.get("area");
+    return { area: a === "all" ? undefined : AREAS.includes(a as Area) ? (a as Area) : "pl" };
+  });
   const [data, setData] = useState<JobList | null>(null);
   const [profile, setProfile] = useState<CareerProfile | null>(null);
   const [views, setViews] = useState<SavedView[]>([]);
@@ -192,6 +203,38 @@ export function OffersView({ screen }: { screen: Screen }) {
           </Link>
         </div>
       </HeaderActions>
+
+      <div className="stack" style={{ gap: 8 }}>
+        <div className="subnav area-tabs" role="tablist" aria-label="Where">
+          {[...AREAS, "all" as const].map((a) => {
+            const on = (filters.area ?? "all") === a;
+            const n =
+              a === "all"
+                ? Object.values(data?.areaCounts ?? {}).reduce((x, y) => x + y, 0)
+                : data?.areaCounts?.[a];
+            return (
+              <button
+                key={a}
+                type="button"
+                role="tab"
+                aria-selected={on}
+                onClick={() => {
+                  setFilters({ ...filters, area: a === "all" ? undefined : a });
+                  const u = new URL(window.location.href);
+                  u.searchParams.set("area", a);
+                  window.history.replaceState(null, "", u);
+                }}
+              >
+                {a === "all" ? "All places" : AREA_LABEL[a]}
+                {data ? <span className="views-count">{n ?? 0}</span> : null}
+              </button>
+            );
+          })}
+        </div>
+        <p className="xsmall muted" style={{ margin: 0 }}>
+          {AREA_HINT[filters.area ?? "all"]}
+        </p>
+      </div>
 
       {profile && !profile.cv.filename ? <CvCard onDone={load} /> : null}
 

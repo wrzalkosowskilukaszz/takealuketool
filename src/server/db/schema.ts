@@ -131,6 +131,8 @@ export type Reason = { text: string; tone: "good" | "warn" | "bad" };
 export type JobMatch = {
   reasons: Reason[];
   region: string;
+  /** Matches tab: pl, eu or world (see areaOf). */
+  area?: string;
   requiredLanguages: string[];
   hits: string[];
 };

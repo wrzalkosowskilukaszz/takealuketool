@@ -24,10 +24,11 @@ export const CareerSettings = z.object({
   tracks: z.array(z.enum(TRACKS)).default([...TRACKS]),
   exploreFields: z.array(z.enum(EXPLORE_FIELDS)).default([...EXPLORE_FIELDS]),
   workTypes: z.array(z.enum(["full_time", "freelance", "part_time"])).default(["full_time", "freelance"]),
-  /** warsaw = Warsaw on-site/hybrid, poland_other = elsewhere in Poland, remote_poland = remote open to PL. */
+  /** warsaw = Warsaw on-site/hybrid, poland_other = elsewhere in Poland, remote_poland = remote open to PL,
+   * eu = on-site or hybrid in the EU/EEA/Switzerland, world = outside the EU (needs a work visa). */
   locations: z
-    .array(z.enum(["warsaw", "poland_other", "remote_poland"]))
-    .default(["warsaw", "poland_other", "remote_poland"]),
+    .array(z.enum(["warsaw", "poland_other", "remote_poland", "eu", "world"]))
+    .default(["warsaw", "poland_other", "remote_poland", "eu", "world"]),
   languages: z.array(z.string().max(5)).default(["en", "pl"]),
   extraKeywords: z.array(z.string().max(60)).max(60).default([]),
   excludeKeywords: z.array(z.string().max(60)).max(60).default([]),

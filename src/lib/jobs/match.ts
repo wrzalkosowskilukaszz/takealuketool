@@ -17,7 +17,7 @@ import {
 } from "./tracks.ts";
 import type { ExploreField, Track } from "./types.ts";
 
-export type LocationPref = "warsaw" | "poland_other" | "remote_poland";
+export type LocationPref = "warsaw" | "poland_other" | "remote_poland" | "eu" | "world";
 export type WorkType = "full_time" | "freelance" | "part_time";
 
 export type CareerPrefs = {
@@ -65,10 +65,29 @@ export const REGION_LABEL: Record<Region, string> = {
   unknown: "Unknown",
 };
 
+/** The three Matches tabs. EEA countries and Switzerland count as EU: a Polish citizen needs no permit there. */
+export const AREAS = ["pl", "eu", "world"] as const;
+export type Area = (typeof AREAS)[number];
+export const AREA_LABEL: Record<Area, string> = {
+  pl: "Poland",
+  eu: "European Union",
+  world: "Rest of the world",
+};
+
+/** What working there takes for a Polish citizen. */
+export type Permit = "none" | "remote" | "visa" | "check";
+export const PERMIT_LABEL: Record<Permit, string> = {
+  none: "No work permit needed",
+  remote: "Remote from Poland",
+  visa: "Needs a work visa",
+  check: "Check where they hire",
+};
+
 export type MatchResult = {
   score: number;
   eligible: boolean;
   region: Region;
+  area: Area;
   track: Track;
   field: ExploreField | null;
   pivot: Pivot;
@@ -164,6 +183,41 @@ const EU_ISO3 =
   /^(POL|DEU|FRA|ESP|ITA|NLD|BEL|AUT|PRT|IRL|SWE|DNK|FIN|CZE|SVK|HUN|ROU|BGR|GRC|HRV|SVN|EST|LVA|LTU|LUX|MLT|CYP)\b/;
 const NON_EU_ISO3 =
   /^(USA|CAN|GBR|IND|MEX|BRA|AUS|CHN|JPN|SGP|ARE|ISR|TUR|ZAF|ARG|COL|PHL|KOR|MYS|IDN|EGY|NGA|KEN|SAU|QAT|NZL|CHL|PER|THA|VNM|UKR|SRB)\b/;
+
+const EUROPE_SCOPE = /\b(emea|europe|european union|\beu\b|cet|cest)\b/i;
+
+/** Which Matches tab an offer belongs to. Mirrored in drizzle/0002_areas.sql for offers stored before. */
+export function areaOf(region: Region, location: string | null | undefined, countries: string[] = []): Area {
+  const loc = location ?? "";
+  const cc = countries.map((c) => c.toUpperCase());
+  switch (region) {
+    case "warsaw":
+    case "poland":
+      return "pl";
+    case "eu":
+    case "europe":
+      return "eu";
+    case "remote_ok":
+      if (
+        WARSAW.test(loc) ||
+        POLAND.test(loc) ||
+        POLAND_OTHER.test(loc) ||
+        (cc.length && cc.every((c) => c === "PL"))
+      )
+        return "pl";
+      if (EUROPE_SCOPE.test(loc) || cc.some((c) => c in EU || c in EUROPE_NON_EU)) return "eu";
+      return "world";
+    default:
+      return "world";
+  }
+}
+
+export function permitOf(region: Region | string, area: Area | string | undefined): Permit {
+  if (area === "pl" || area === "eu") return "none";
+  if (region === "remote_ok") return "remote";
+  if (region === "non_eu") return "visa";
+  return "check";
+}
 
 function countryOf(text: string): string | null {
   const t = text.toLowerCase();
@@ -412,9 +466,17 @@ export function scoreJob(job: JobInput, prefs: CareerPrefs, now = new Date()): M
       score += 9;
       reasons.push({ text: job.location ? (shortPlace(job.location) ?? "Poland") : "Poland", tone: "good" });
     } else eligible = false;
+  } else if (region === "eu" || region === "europe") {
+    if (loc.includes("eu")) {
+      score += 8;
+      reasons.push({ text: `${shortPlace(job.location) ?? "EU"}: no work permit needed`, tone: "good" });
+    } else eligible = false;
+  } else if (region === "non_eu") {
+    if (loc.includes("world")) reasons.push({ text: "Outside the EU: needs a work visa", tone: "warn" });
+    else eligible = false;
   } else if (region === "unknown" && /\b(poland|polska|polsce|warsaw|warszaw\w*)\b/i.test(job.description)) {
     reasons.push({ text: "Place unclear: the ad mentions Poland", tone: "warn" });
-  } else eligible = false; // on-site abroad, remote limited to other countries, or no place at all
+  } else eligible = false; // remote limited to other countries, or no place at all
 
   // Role: the title says the most.
   const hit = trackOf(title, job.companySector);
@@ -496,6 +558,7 @@ export function scoreJob(job: JobInput, prefs: CareerPrefs, now = new Date()): M
     score: eligible ? clamp(score) : 0,
     eligible,
     region,
+    area: areaOf(region, job.location, job.countries ?? []),
     track,
     field,
     pivot,

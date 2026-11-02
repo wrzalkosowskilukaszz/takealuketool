@@ -380,7 +380,13 @@ export function matchColumns(m: MatchResult) {
     field: m.field,
     pivot: m.pivot,
     figmaShare: m.figmaShare,
-    match: { reasons: m.reasons, region: m.region, requiredLanguages: m.requiredLanguages, hits: m.hits },
+    match: {
+      reasons: m.reasons,
+      region: m.region,
+      area: m.area,
+      requiredLanguages: m.requiredLanguages,
+      hits: m.hits,
+    },
   };
 }
 

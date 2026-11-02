@@ -15,18 +15,41 @@ import { type AiFit, jobOffers } from "../db/schema.ts";
 import { env } from "../env.ts";
 import { BudgetExceededError, withBudget } from "../jobs/budget.ts";
 import { getSettings } from "../settings.ts";
-import { AiNotConfiguredError, aiConfigured, structured } from "./client.ts";
+import { AiNotConfiguredError, aiConfigured, clip, structured } from "./client.ts";
 
+/**
+ * Structured outputs do not enforce length or range limits, so the schema has none (a long line would
+ * otherwise fail the whole answer). The prompt asks for short lines and `clipFit` enforces the limits.
+ */
 export const FitSchema = z.object({
-  score: z.number().int().min(0).max(100),
-  summary: z.string().max(300),
-  why: z.array(z.string().max(220)).max(3),
-  gaps: z.array(z.string().max(220)).max(3),
-  angle: z.string().max(300),
+  score: z.number(),
+  summary: z.string(),
+  why: z.array(z.string()),
+  gaps: z.array(z.string()),
+  angle: z.string(),
   track: z.enum(["core", "beyond", "adjacent", "new_field"]),
   pivot: z.enum(["none", "small", "pivot", "big"]),
   figmaShare: z.enum(["hands_on", "mixed", "direction", "none"]),
 });
+
+/** A short, readable reason for the offer panel instead of a raw parser dump. */
+export function scoreErrorText(e: unknown): string {
+  const msg = e instanceof Error ? e.message : String(e);
+  if (/parse structured output|valid structure/i.test(msg))
+    return "Claude's answer came back in an unexpected format. It will try again on a later refresh.";
+  return msg.slice(0, 300);
+}
+
+export function clipFit(f: z.infer<typeof FitSchema>): z.infer<typeof FitSchema> {
+  return {
+    ...f,
+    score: Math.round(Math.min(100, Math.max(0, f.score))),
+    summary: clip(f.summary, 300),
+    why: f.why.slice(0, 3).map((x) => clip(x, 220)),
+    gaps: f.gaps.slice(0, 3).map((x) => clip(x, 220)),
+    angle: clip(f.angle, 300),
+  };
+}
 
 export const SCORE_SYSTEM = `You are a sharp, honest career advisor for one person: a senior creative based in Warsaw. You read one job offer and judge how well it fits their CV and goals.
 
@@ -112,7 +135,7 @@ export async function scoreDueOffers(opts: { deadline: number }): Promise<ScoreR
           await db()
             .update(jobOffers)
             .set({
-              aiError: (e instanceof Error ? e.message : String(e)).slice(0, 300),
+              aiError: scoreErrorText(e),
               updatedAt: new Date(),
             })
             .where(eq(jobOffers.id, o.id));
@@ -151,7 +174,7 @@ export async function scoreOffer(
       return { value: res, credits: (res.inputTokens + res.outputTokens) / 1000 };
     },
   );
-  const fit: AiFit = { ...r.data, model: r.model };
+  const fit: AiFit = { ...clipFit(r.data), model: r.model };
   await db()
     .update(jobOffers)
     .set({

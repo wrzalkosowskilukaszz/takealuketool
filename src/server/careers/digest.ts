@@ -50,6 +50,8 @@ export async function buildDigest(opts: { mark?: boolean } = {}): Promise<Digest
     eq(jobOffers.status, "new"),
     gte(jobOffers.firstSeenAt, since),
     gte(jobOffers.score, s.minScore),
+    // Jobs that need a work visa stay in the app's "Rest of the world" tab, not in the morning digest.
+    sql`${jobOffers.match}->>'region' <> 'non_eu'`,
   );
   const pick = async (tracks: Track[], limit: number) =>
     limit <= 0

@@ -21,6 +21,8 @@ const LOCATIONS = {
   warsaw: "Warsaw, on-site or hybrid",
   poland_other: "Elsewhere in Poland",
   remote_poland: "Remote, open to someone in Poland",
+  eu: "On-site or hybrid in the EU, EEA or Switzerland (no work permit needed)",
+  world: "Outside the EU (shown with a work visa warning)",
 } as const;
 const WORK = {
   full_time: "Full-time",

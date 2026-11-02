@@ -15,6 +15,13 @@
       "when": 1793621840305,
       "tag": "0001_cv_studio",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1793625000000,
+      "tag": "0002_areas",
+      "breakpoints": true
     }
   ]
 }
