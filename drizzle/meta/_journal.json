@@ -8,6 +8,13 @@
       "when": 1793618131485,
       "tag": "0000_initial",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1793621840305,
+      "tag": "0001_cv_studio",
+      "breakpoints": true
     }
   ]
 }

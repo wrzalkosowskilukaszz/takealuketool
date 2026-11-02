@@ -5,6 +5,7 @@
  */
 import { eq } from "drizzle-orm";
 import { z } from "zod";
+import { cvSourceText } from "../cv/service.ts";
 import { db } from "../db/client.ts";
 import { jobOffers } from "../db/schema.ts";
 import { badRequest, notFound } from "../http.ts";
@@ -24,8 +25,8 @@ export async function draftCoverLetter(
 ): Promise<{ letter: string; checks: string[]; at: string }> {
   const [o] = await db().select().from(jobOffers).where(eq(jobOffers.id, id)).limit(1);
   if (!o) throw notFound("Offer not found");
-  const career = await getSettings("career");
-  if (!career.cvText) throw badRequest("Upload your CV first (Settings → CV).");
+  const cvText = await cvSourceText();
+  if (!cvText) throw badRequest("Upload your CV (Settings) or import your experience base (CV) first.");
   const p = await getSettings("profile");
   const words = opts.length === "short" ? "120 to 170 words" : "220 to 320 words";
   const system = `You write cover letters for one person: ${p.name}, ${p.headline}, based in ${p.city}.
@@ -49,7 +50,7 @@ ${o.description.slice(0, 10_000) || "(no description in the source)"}
 </job_offer>
 
 <cv>
-${career.cvText.slice(0, 12_000)}
+${cvText.slice(0, 12_000)}
 </cv>
 ${o.ai?.angle ? `\nSuggested angle from the fit analysis: ${o.ai.angle}` : ""}${opts.extra ? `\nExtra instructions from the owner: ${opts.extra.slice(0, 600)}` : ""}`;
   const r = await structured(LetterSchema, {

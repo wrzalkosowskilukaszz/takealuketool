@@ -12,6 +12,7 @@ import {
   Sparkles,
   X,
 } from "lucide-react";
+import Link from "next/link";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { useToast } from "@/components/toast";
 import { Callout } from "@/components/ui";
@@ -30,7 +31,6 @@ import { formatWarsaw } from "@/lib/time";
 import type { JobDetail } from "@/server/careers/service";
 import { FigmaTag, PivotTag, ScoreRing, TrackTag } from "./bits";
 import { LetterDialog } from "./letter-dialog";
-import { TailorDialog } from "./tailor-dialog";
 
 const FLOW: JobStatus[] = ["saved", "applied", "interview", "offer", "rejected"];
 const WORKPLACE: Record<string, string> = { remote: "remote", hybrid: "hybrid", onsite: "on-site" };
@@ -49,7 +49,6 @@ export function OfferPanel({
   const [note, setNote] = useState("");
   const [noteState, setNoteState] = useState<"saved" | "pending">("saved");
   const [full, setFull] = useState(false);
-  const [tailor, setTailor] = useState(false);
   const [letter, setLetter] = useState(false);
   const [scoring, setScoring] = useState(false);
   const noteTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
@@ -79,15 +78,10 @@ export function OfferPanel({
   useEffect(() => {
     setD(null);
     setFull(false);
-    setTailor(false);
     setLetter(false);
     void load().catch(() => toast("Could not load the offer", "error"));
   }, [load, toast]);
 
-  const savedTailored = useCallback(
-    (at: string | null) => setD((x) => (x ? { ...x, tailoredCvAt: at } : x)),
-    [],
-  );
   const savedLetter = useCallback(
     (at: string | null) => {
       setD((x) => (x ? { ...x, coverLetterAt: at } : x));
@@ -260,9 +254,15 @@ export function OfferPanel({
               <button type="button" className="btn" onClick={() => setLetter(true)}>
                 <Mail size={14} /> {d.coverLetterAt ? "Cover letter" : "Draft cover letter"}
               </button>
-              <button type="button" className="btn" onClick={() => setTailor(true)}>
-                <FileText size={14} /> {d.tailoredCvAt ? "Tailored CV" : "Tailor CV"}
-              </button>
+              {d.cvVersions[0] ? (
+                <Link className="btn" href={`/cv/${d.cvVersions[0].id}`}>
+                  <FileText size={14} /> Tailored CV
+                </Link>
+              ) : (
+                <Link className="btn" href={`/cv?offer=${id}`}>
+                  <FileText size={14} /> Tailor CV
+                </Link>
+              )}
               {d.status === "saved" ? (
                 <button
                   type="button"
@@ -453,30 +453,20 @@ export function OfferPanel({
         )}
       </div>
       {d ? (
-        <>
-          <TailorDialog
-            id={id}
-            title={d.title}
-            company={d.companyName}
-            open={tailor}
-            onClose={() => setTailor(false)}
-            onSaved={savedTailored}
-          />
-          <LetterDialog
-            id={id}
-            title={d.title}
-            company={d.companyName}
-            initial={letterText}
-            initialLang={d.coverLetterLang}
-            adLanguage={d.adLanguage}
-            open={letter}
-            onClose={() => {
-              setLetter(false);
-              void load();
-            }}
-            onSaved={savedLetter}
-          />
-        </>
+        <LetterDialog
+          id={id}
+          title={d.title}
+          company={d.companyName}
+          initial={letterText}
+          initialLang={d.coverLetterLang}
+          adLanguage={d.adLanguage}
+          open={letter}
+          onClose={() => {
+            setLetter(false);
+            void load();
+          }}
+          onSaved={savedLetter}
+        />
       ) : null}
     </aside>
   );

@@ -3,6 +3,7 @@ import { and, asc, gte, inArray, isNull, lte, ne, sql } from "drizzle-orm";
 import { nextScheduledInstant } from "@/lib/time";
 import { aiConfigured } from "./ai/client.ts";
 import { jobsState } from "./careers/sync.ts";
+import { hasConfirmedBase } from "./cv/service.ts";
 import { db } from "./db/client.ts";
 import { jobOffers, jobSources } from "./db/schema.ts";
 import { integrations } from "./env.ts";
@@ -31,7 +32,7 @@ export async function appStatus() {
   const tickAge = tick.lastTickAt ? Date.now() - Date.parse(tick.lastTickAt) : Number.POSITIVE_INFINITY;
   return {
     counts: { matches: c?.newMatches ?? 0, explore: c?.newExplore ?? 0, followUps: f?.n ?? 0 },
-    hasCv: Boolean(career.cvText),
+    hasCv: Boolean(career.cvText) || (await hasConfirmedBase()),
     scheduler: {
       enabled: sched.enabled,
       localTime: sched.localTime,

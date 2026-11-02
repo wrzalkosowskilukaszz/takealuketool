@@ -12,13 +12,17 @@ codebase and design, with the contact database and outreach removed.
 | **Matches** | Creative, design and AI roles: *Core creative* (Creative Designer, Senior Graphic Designer, AI Designer, Art Director) and *Beyond Figma* (AI Creative Lead, Creative Technologist, AI product and prompt roles, creative strategy). Filters, saved views, Claude's fit notes, pivot and Figma-share flags. |
 | **Explore** | Roles in other fields where the same skills count: real estate, sales, partnerships, brand and marketing, product, consulting, teaching. Each says how big a pivot it is. |
 | **Pipeline** | Saved → Applied → Interview → Offer / Rejected, with follow-up reminders a week after applying. |
+| **CV** | The CV studio from the "Kreator CV pod oferty": an experience base of single facts (confirmed, to confirm, interpretation), and CVs written for one posting from confirmed facts only. Claude analyzes the posting, writes the CV with a fact id on every line, then fact-checks each line; numbers must appear in the cited facts. Edit on the page, download Word or print to PDF. |
 | **Grow** | Eight career paths beyond design (why they suit him, what the work is, pay, gaps, a 30/60/90-day plan, checked links) and a career advisor chat with Claude. |
 | **Companies** | 334 suggested companies in six groups whose own career pages are watched. Favourite or exclude any. |
 | **Settings** | CV, what to look for, Claude's spend caps, the morning digest, the daily refresh time, profile for letters, and source health. |
 
 Each offer opens in a panel with Claude's reading of the fit (why, gaps, the angle to take), a cover
-letter Claude drafts in English or Polish and you edit in place (Word download), and a CV tailored to the
-offer.
+letter Claude drafts in English or Polish and you edit in place (Word download), and **Tailor CV**, which
+opens the CV studio with the offer filled in.
+
+Without an uploaded CV, fit scores, cover letters and the advisor read the confirmed facts of the experience
+base instead.
 
 ## How it works
 

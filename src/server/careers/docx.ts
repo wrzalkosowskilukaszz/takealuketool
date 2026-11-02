@@ -48,7 +48,7 @@ export function parseCv(text: string): Para[] {
   return out;
 }
 
-const esc = (s: string) =>
+export const esc = (s: string) =>
   s
     // biome-ignore lint/suspicious/noControlCharactersInRegex: characters XML does not allow
     .replace(/[\u0000-\u0008\u000B\u000C\u000E-\u001F]/g, "")
@@ -77,7 +77,11 @@ const W = "http://schemas.openxmlformats.org/wordprocessingml/2006/main";
 
 export async function cvDocx(text: string, title: string): Promise<Uint8Array> {
   const paras = parseCv(text);
-  const body = paras.map((p, i) => paraXml(p, paras[i - 1]?.kind)).join("");
+  return docxFromBody(paras.map((p, i) => paraXml(p, paras[i - 1]?.kind)).join(""), title);
+}
+
+/** Wraps WordprocessingML body paragraphs into a complete .docx (A4, Calibri). */
+export async function docxFromBody(body: string, title: string): Promise<Uint8Array> {
   const zip = new JSZip();
   zip.file(
     "[Content_Types].xml",
