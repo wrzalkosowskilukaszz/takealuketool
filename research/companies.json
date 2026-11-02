@@ -1,0 +1,2010 @@
+{
+  "generatedAt": "2026-11-02",
+  "about": "Companies whose own career pages Take a Luke Studio watches, in five groups. Suggested from general knowledge on 2026-11-02; websites are checked by the first sync, which looks for a public job board on each site. Remove or exclude any that turn out wrong.",
+  "companies": [
+    {
+      "name": "Figma",
+      "website": "https://figma.com",
+      "sector": "ai_creative",
+      "note": "Design tool; product design and brand roles, some remote in Europe"
+    },
+    {
+      "name": "Canva",
+      "website": "https://canva.com",
+      "sector": "ai_creative",
+      "note": "Design platform; brand, creative and AI design roles"
+    },
+    {
+      "name": "Adobe",
+      "website": "https://adobe.com",
+      "sector": "ai_creative",
+      "note": "Creative Cloud and Firefly; design and AI roles"
+    },
+    {
+      "name": "Runway",
+      "website": "https://runwayml.com",
+      "sector": "ai_creative",
+      "note": "Generative video; creative and AI roles"
+    },
+    {
+      "name": "ElevenLabs",
+      "website": "https://elevenlabs.io",
+      "sector": "ai_creative",
+      "note": "AI audio; team in Poland, remote-friendly"
+    },
+    {
+      "name": "Synthesia",
+      "website": "https://synthesia.io",
+      "sector": "ai_creative",
+      "note": "AI video; creative and product roles in Europe"
+    },
+    {
+      "name": "Stability AI",
+      "website": "https://stability.ai",
+      "sector": "ai_creative",
+      "note": "Generative image models"
+    },
+    {
+      "name": "Hugging Face",
+      "website": "https://huggingface.co",
+      "sector": "ai_creative",
+      "note": "Open AI platform; remote roles"
+    },
+    {
+      "name": "Anthropic",
+      "website": "https://anthropic.com",
+      "sector": "ai_creative",
+      "note": "AI lab; brand and design roles"
+    },
+    {
+      "name": "OpenAI",
+      "website": "https://openai.com",
+      "sector": "ai_creative",
+      "note": "AI lab; design roles"
+    },
+    {
+      "name": "Mistral AI",
+      "website": "https://mistral.ai",
+      "sector": "ai_creative",
+      "note": "European AI lab"
+    },
+    {
+      "name": "DeepL",
+      "website": "https://deepl.com",
+      "sector": "ai_creative",
+      "note": "AI translation; European offices"
+    },
+    {
+      "name": "Lovable",
+      "website": "https://lovable.dev",
+      "sector": "ai_creative",
+      "note": "AI app builder; design and growth roles"
+    },
+    {
+      "name": "Framer",
+      "website": "https://framer.com",
+      "sector": "ai_creative",
+      "note": "Website builder; design roles, Europe"
+    },
+    {
+      "name": "Webflow",
+      "website": "https://webflow.com",
+      "sector": "ai_creative",
+      "note": "Website builder; remote roles"
+    },
+    {
+      "name": "Pitch",
+      "website": "https://pitch.com",
+      "sector": "ai_creative",
+      "note": "Presentation software; Berlin, remote in Europe"
+    },
+    {
+      "name": "Miro",
+      "website": "https://miro.com",
+      "sector": "ai_creative",
+      "note": "Visual collaboration; design and AI roles"
+    },
+    {
+      "name": "Krea",
+      "website": "https://krea.ai",
+      "sector": "ai_creative",
+      "note": "Generative creative tools"
+    },
+    {
+      "name": "Superside",
+      "website": "https://superside.com",
+      "sector": "ai_creative",
+      "note": "Remote creative-as-a-service; art directors and designers"
+    },
+    {
+      "name": "Jitter",
+      "website": "https://jitter.video",
+      "sector": "ai_creative",
+      "note": "Motion design tool"
+    },
+    {
+      "name": "Spline",
+      "website": "https://spline.design",
+      "sector": "ai_creative",
+      "note": "3D design tool"
+    },
+    {
+      "name": "Rive",
+      "website": "https://rive.app",
+      "sector": "ai_creative",
+      "note": "Interactive animation tool"
+    },
+    {
+      "name": "Descript",
+      "website": "https://descript.com",
+      "sector": "ai_creative",
+      "note": "AI video and audio editing"
+    },
+    {
+      "name": "Captions",
+      "website": "https://captions.ai",
+      "sector": "ai_creative",
+      "note": "AI video app"
+    },
+    {
+      "name": "Pika",
+      "website": "https://pika.art",
+      "sector": "ai_creative",
+      "note": "Generative video"
+    },
+    {
+      "name": "Luma AI",
+      "website": "https://lumalabs.ai",
+      "sector": "ai_creative",
+      "note": "Generative 3D and video"
+    },
+    {
+      "name": "Black Forest Labs",
+      "website": "https://bfl.ai",
+      "sector": "ai_creative",
+      "note": "FLUX image models"
+    },
+    {
+      "name": "Photoroom",
+      "website": "https://photoroom.com",
+      "sector": "ai_creative",
+      "note": "AI photo editing; Paris, remote"
+    },
+    {
+      "name": "Picsart",
+      "website": "https://picsart.com",
+      "sector": "ai_creative",
+      "note": "Creative app; design roles"
+    },
+    {
+      "name": "Gamma",
+      "website": "https://gamma.app",
+      "sector": "ai_creative",
+      "note": "AI presentations"
+    },
+    {
+      "name": "Tome",
+      "website": "https://tome.app",
+      "sector": "ai_creative",
+      "note": "AI storytelling"
+    },
+    {
+      "name": "Typeface",
+      "website": "https://typeface.ai",
+      "sector": "ai_creative",
+      "note": "Generative AI for brand content"
+    },
+    {
+      "name": "Jasper",
+      "website": "https://jasper.ai",
+      "sector": "ai_creative",
+      "note": "AI marketing content"
+    },
+    {
+      "name": "Writer",
+      "website": "https://writer.com",
+      "sector": "ai_creative",
+      "note": "Enterprise generative AI"
+    },
+    {
+      "name": "Cohere",
+      "website": "https://cohere.com",
+      "sector": "ai_creative",
+      "note": "Enterprise LLMs"
+    },
+    {
+      "name": "Perplexity",
+      "website": "https://perplexity.ai",
+      "sector": "ai_creative",
+      "note": "AI search; brand design roles"
+    },
+    {
+      "name": "Notion",
+      "website": "https://notion.so",
+      "sector": "ai_creative",
+      "note": "Workspace software; brand and design roles"
+    },
+    {
+      "name": "Linear",
+      "website": "https://linear.app",
+      "sector": "ai_creative",
+      "note": "Product tool; remote design roles"
+    },
+    {
+      "name": "Vercel",
+      "website": "https://vercel.com",
+      "sector": "ai_creative",
+      "note": "Web platform; design engineering roles"
+    },
+    {
+      "name": "Spotify",
+      "website": "https://spotify.com",
+      "sector": "ai_creative",
+      "note": "Design and creative roles in Europe"
+    },
+    {
+      "name": "Shopify",
+      "website": "https://shopify.com",
+      "sector": "ai_creative",
+      "note": "Remote-first; design roles"
+    },
+    {
+      "name": "Automattic",
+      "website": "https://automattic.com",
+      "sector": "ai_creative",
+      "note": "Fully remote; design roles"
+    },
+    {
+      "name": "GitLab",
+      "website": "https://gitlab.com",
+      "sector": "ai_creative",
+      "note": "Fully remote; design roles"
+    },
+    {
+      "name": "Doist",
+      "website": "https://doist.com",
+      "sector": "ai_creative",
+      "note": "Fully remote; design roles"
+    },
+    {
+      "name": "Hotjar",
+      "website": "https://hotjar.com",
+      "sector": "ai_creative",
+      "note": "Remote-first; design and marketing roles"
+    },
+    {
+      "name": "Toptal",
+      "website": "https://toptal.com",
+      "sector": "ai_creative",
+      "note": "Remote talent network; designers"
+    },
+    {
+      "name": "Envato",
+      "website": "https://envato.com",
+      "sector": "ai_creative",
+      "note": "Creative marketplace"
+    },
+    {
+      "name": "Shutterstock",
+      "website": "https://shutterstock.com",
+      "sector": "ai_creative",
+      "note": "Stock and generative AI"
+    },
+    {
+      "name": "Getty Images",
+      "website": "https://gettyimages.com",
+      "sector": "ai_creative",
+      "note": "Creative content"
+    },
+    {
+      "name": "Freepik",
+      "website": "https://freepik.com",
+      "sector": "ai_creative",
+      "note": "Creative assets and AI tools"
+    },
+    {
+      "name": "Squarespace",
+      "website": "https://squarespace.com",
+      "sector": "ai_creative",
+      "note": "Website builder; brand design"
+    },
+    {
+      "name": "Wix",
+      "website": "https://wix.com",
+      "sector": "ai_creative",
+      "note": "Website builder; design and AI"
+    },
+    {
+      "name": "Duolingo",
+      "website": "https://duolingo.com",
+      "sector": "ai_creative",
+      "note": "Brand and illustration roles"
+    },
+    {
+      "name": "Airtable",
+      "website": "https://airtable.com",
+      "sector": "ai_creative",
+      "note": "No-code platform"
+    },
+    {
+      "name": "Zapier",
+      "website": "https://zapier.com",
+      "sector": "ai_creative",
+      "note": "Fully remote; AI automation roles"
+    },
+    {
+      "name": "Intercom",
+      "website": "https://intercom.com",
+      "sector": "ai_creative",
+      "note": "AI customer service; design and sales roles"
+    },
+    {
+      "name": "Grammarly",
+      "website": "https://grammarly.com",
+      "sector": "ai_creative",
+      "note": "AI writing; design roles"
+    },
+    {
+      "name": "Unity",
+      "website": "https://unity.com",
+      "sector": "ai_creative",
+      "note": "Real-time 3D"
+    },
+    {
+      "name": "Epic Games",
+      "website": "https://epicgames.com",
+      "sector": "ai_creative",
+      "note": "Unreal Engine; creative roles"
+    },
+    {
+      "name": "Meta",
+      "website": "https://meta.com",
+      "sector": "ai_creative",
+      "note": "Design and creative technology roles"
+    },
+    {
+      "name": "Google",
+      "website": "https://google.com",
+      "sector": "ai_creative",
+      "note": "Warsaw office; UX and creative roles"
+    },
+    {
+      "name": "Microsoft",
+      "website": "https://microsoft.com",
+      "sector": "ai_creative",
+      "note": "Warsaw office; design roles"
+    },
+    {
+      "name": "Amazon",
+      "website": "https://amazon.jobs",
+      "sector": "ai_creative",
+      "note": "Poland offices; design and creative roles"
+    },
+    {
+      "name": "Apple",
+      "website": "https://apple.com",
+      "sector": "ai_creative",
+      "note": "Design roles"
+    },
+    {
+      "name": "Samsung",
+      "website": "https://samsung.com",
+      "sector": "ai_creative",
+      "note": "Samsung R&D Poland in Warsaw"
+    },
+    {
+      "name": "Huawei",
+      "website": "https://huawei.com",
+      "sector": "ai_creative",
+      "note": "R&D in Warsaw"
+    },
+    {
+      "name": "Allegro",
+      "website": "https://allegro.eu",
+      "sector": "product_warsaw",
+      "note": "Largest Polish marketplace; design and brand teams in Warsaw"
+    },
+    {
+      "name": "Booksy",
+      "website": "https://booksy.com",
+      "sector": "product_warsaw",
+      "note": "Booking app from Warsaw"
+    },
+    {
+      "name": "Docplanner",
+      "website": "https://docplanner.com",
+      "sector": "product_warsaw",
+      "note": "ZnanyLekarz; Warsaw product and design"
+    },
+    {
+      "name": "Revolut",
+      "website": "https://revolut.com",
+      "sector": "product_warsaw",
+      "note": "Fintech; Kraków and remote roles"
+    },
+    {
+      "name": "Bolt",
+      "website": "https://bolt.eu",
+      "sector": "product_warsaw",
+      "note": "Mobility; Warsaw hub"
+    },
+    {
+      "name": "Glovo",
+      "website": "https://glovoapp.com",
+      "sector": "product_warsaw",
+      "note": "Delivery; Warsaw office"
+    },
+    {
+      "name": "Wolt",
+      "website": "https://wolt.com",
+      "sector": "product_warsaw",
+      "note": "Delivery"
+    },
+    {
+      "name": "Uber",
+      "website": "https://uber.com",
+      "sector": "product_warsaw",
+      "note": "Warsaw engineering and design centre"
+    },
+    {
+      "name": "InPost",
+      "website": "https://inpost.pl",
+      "sector": "product_warsaw",
+      "note": "Parcel lockers; brand and product"
+    },
+    {
+      "name": "OLX Group",
+      "website": "https://olxgroup.com",
+      "sector": "product_warsaw",
+      "note": "OLX and Otodom; Poznań and Warsaw"
+    },
+    {
+      "name": "Żabka",
+      "website": "https://zabka.pl",
+      "sector": "product_warsaw",
+      "note": "Retail; digital and brand teams"
+    },
+    {
+      "name": "LPP",
+      "website": "https://lpp.com",
+      "sector": "product_warsaw",
+      "note": "Fashion group (Reserved, Sinsay); design"
+    },
+    {
+      "name": "CCC",
+      "website": "https://ccc.eu",
+      "sector": "product_warsaw",
+      "note": "Footwear retail; e-commerce and brand"
+    },
+    {
+      "name": "ING Hubs Poland",
+      "website": "https://ing.pl",
+      "sector": "product_warsaw",
+      "note": "Bank; UX and design"
+    },
+    {
+      "name": "mBank",
+      "website": "https://mbank.pl",
+      "sector": "product_warsaw",
+      "note": "Digital bank; design and brand"
+    },
+    {
+      "name": "PKO Bank Polski",
+      "website": "https://pkobp.pl",
+      "sector": "product_warsaw",
+      "note": "Bank; design"
+    },
+    {
+      "name": "Santander Bank Polska",
+      "website": "https://santander.pl",
+      "sector": "product_warsaw",
+      "note": "Bank; design"
+    },
+    {
+      "name": "Orange Polska",
+      "website": "https://orange.pl",
+      "sector": "product_warsaw",
+      "note": "Telecom; brand and design"
+    },
+    {
+      "name": "Play",
+      "website": "https://play.pl",
+      "sector": "product_warsaw",
+      "note": "Telecom; brand"
+    },
+    {
+      "name": "Netguru",
+      "website": "https://netguru.com",
+      "sector": "product_warsaw",
+      "note": "Digital consultancy; design roles, remote in Poland"
+    },
+    {
+      "name": "STX Next",
+      "website": "https://stxnext.com",
+      "sector": "product_warsaw",
+      "note": "Software house; design"
+    },
+    {
+      "name": "10Clouds",
+      "website": "https://10clouds.com",
+      "sector": "product_warsaw",
+      "note": "Software house in Warsaw"
+    },
+    {
+      "name": "Miquido",
+      "website": "https://miquido.com",
+      "sector": "product_warsaw",
+      "note": "Software house; design and AI"
+    },
+    {
+      "name": "Monterail",
+      "website": "https://monterail.com",
+      "sector": "product_warsaw",
+      "note": "Software house; product design"
+    },
+    {
+      "name": "Brainly",
+      "website": "https://brainly.com",
+      "sector": "product_warsaw",
+      "note": "Edtech from Kraków"
+    },
+    {
+      "name": "Tidio",
+      "website": "https://tidio.com",
+      "sector": "product_warsaw",
+      "note": "AI customer service from Szczecin"
+    },
+    {
+      "name": "Text (LiveChat)",
+      "website": "https://text.com",
+      "sector": "product_warsaw",
+      "note": "LiveChat, ChatBot; Wrocław"
+    },
+    {
+      "name": "Surfer",
+      "website": "https://surferseo.com",
+      "sector": "product_warsaw",
+      "note": "SEO software; remote in Poland"
+    },
+    {
+      "name": "Brand24",
+      "website": "https://brand24.com",
+      "sector": "product_warsaw",
+      "note": "Social listening"
+    },
+    {
+      "name": "Packhelp",
+      "website": "https://packhelp.com",
+      "sector": "product_warsaw",
+      "note": "Packaging platform from Warsaw"
+    },
+    {
+      "name": "Synerise",
+      "website": "https://synerise.com",
+      "sector": "product_warsaw",
+      "note": "AI growth platform; Kraków and Warsaw"
+    },
+    {
+      "name": "Pyszne.pl",
+      "website": "https://pyszne.pl",
+      "sector": "product_warsaw",
+      "note": "Food delivery"
+    },
+    {
+      "name": "Ramp Network",
+      "website": "https://ramp.network",
+      "sector": "product_warsaw",
+      "note": "Crypto payments; Warsaw"
+    },
+    {
+      "name": "Zondacrypto",
+      "website": "https://zondacrypto.com",
+      "sector": "product_warsaw",
+      "note": "Crypto exchange"
+    },
+    {
+      "name": "Nomagic",
+      "website": "https://nomagic.ai",
+      "sector": "product_warsaw",
+      "note": "AI robotics; Warsaw"
+    },
+    {
+      "name": "Infermedica",
+      "website": "https://infermedica.com",
+      "sector": "product_warsaw",
+      "note": "Medical AI; Wrocław"
+    },
+    {
+      "name": "CD PROJEKT RED",
+      "website": "https://cdprojektred.com",
+      "sector": "product_warsaw",
+      "note": "Games; Warsaw; art and creative roles"
+    },
+    {
+      "name": "Techland",
+      "website": "https://techland.net",
+      "sector": "product_warsaw",
+      "note": "Games; Wrocław and Warsaw"
+    },
+    {
+      "name": "11 bit studios",
+      "website": "https://11bitstudios.com",
+      "sector": "product_warsaw",
+      "note": "Games; Warsaw"
+    },
+    {
+      "name": "People Can Fly",
+      "website": "https://peoplecanfly.com",
+      "sector": "product_warsaw",
+      "note": "Games; Warsaw"
+    },
+    {
+      "name": "Bloober Team",
+      "website": "https://blooberteam.com",
+      "sector": "product_warsaw",
+      "note": "Games; Kraków"
+    },
+    {
+      "name": "Ten Square Games",
+      "website": "https://tensquaregames.com",
+      "sector": "product_warsaw",
+      "note": "Mobile games; Wrocław"
+    },
+    {
+      "name": "Huuuge Games",
+      "website": "https://huuugegames.com",
+      "sector": "product_warsaw",
+      "note": "Mobile games; Warsaw"
+    },
+    {
+      "name": "Flying Wild Hog",
+      "website": "https://flyingwildhog.com",
+      "sector": "product_warsaw",
+      "note": "Games; Warsaw"
+    },
+    {
+      "name": "Bumble",
+      "website": "https://bumble.com",
+      "sector": "product_warsaw",
+      "note": "Dating apps; design and brand"
+    },
+    {
+      "name": "Zalando",
+      "website": "https://zalando.com",
+      "sector": "product_warsaw",
+      "note": "Fashion; Poland hubs"
+    },
+    {
+      "name": "Visa",
+      "website": "https://visa.com",
+      "sector": "product_warsaw",
+      "note": "Warsaw design hub"
+    },
+    {
+      "name": "Philip Morris International",
+      "website": "https://pmi.com",
+      "sector": "product_warsaw",
+      "note": "Kraków and Warsaw; brand and digital"
+    },
+    {
+      "name": "Procter & Gamble",
+      "website": "https://pg.com",
+      "sector": "product_warsaw",
+      "note": "Warsaw; brand"
+    },
+    {
+      "name": "Unilever",
+      "website": "https://unilever.com",
+      "sector": "product_warsaw",
+      "note": "Brand teams"
+    },
+    {
+      "name": "Mars",
+      "website": "https://mars.com",
+      "sector": "product_warsaw",
+      "note": "Brand teams in Warsaw"
+    },
+    {
+      "name": "Nestlé",
+      "website": "https://nestle.pl",
+      "sector": "product_warsaw",
+      "note": "Brand teams"
+    },
+    {
+      "name": "L'Oréal",
+      "website": "https://loreal.com",
+      "sector": "product_warsaw",
+      "note": "Brand and creative; Warsaw"
+    },
+    {
+      "name": "IKEA",
+      "website": "https://ikea.com",
+      "sector": "product_warsaw",
+      "note": "In-house creative"
+    },
+    {
+      "name": "Decathlon",
+      "website": "https://decathlon.com",
+      "sector": "product_warsaw",
+      "note": "In-house design"
+    },
+    {
+      "name": "Rossmann",
+      "website": "https://rossmann.pl",
+      "sector": "product_warsaw",
+      "note": "Retail; brand and e-commerce"
+    },
+    {
+      "name": "Empik",
+      "website": "https://empik.com",
+      "sector": "product_warsaw",
+      "note": "Retail; brand and digital"
+    },
+    {
+      "name": "Medicover",
+      "website": "https://medicover.com",
+      "sector": "product_warsaw",
+      "note": "Healthcare; brand and digital"
+    },
+    {
+      "name": "LUX MED",
+      "website": "https://luxmed.pl",
+      "sector": "product_warsaw",
+      "note": "Healthcare; brand"
+    },
+    {
+      "name": "Polsat Plus Group",
+      "website": "https://grupapolsatplus.pl",
+      "sector": "product_warsaw",
+      "note": "Media; creative"
+    },
+    {
+      "name": "TVN Warner Bros. Discovery",
+      "website": "https://tvn.pl",
+      "sector": "product_warsaw",
+      "note": "Media; creative and promo"
+    },
+    {
+      "name": "Agora",
+      "website": "https://agora.pl",
+      "sector": "product_warsaw",
+      "note": "Media; design"
+    },
+    {
+      "name": "Ringier Axel Springer Polska",
+      "website": "https://ringieraxelspringer.pl",
+      "sector": "product_warsaw",
+      "note": "Media; design"
+    },
+    {
+      "name": "Wirtualna Polska",
+      "website": "https://wp.pl",
+      "sector": "product_warsaw",
+      "note": "Media and tech; design"
+    },
+    {
+      "name": "Kaufland Polska",
+      "website": "https://kaufland.pl",
+      "sector": "product_warsaw",
+      "note": "Retail; brand"
+    },
+    {
+      "name": "Lidl Polska",
+      "website": "https://lidl.pl",
+      "sector": "product_warsaw",
+      "note": "Retail; in-house creative"
+    },
+    {
+      "name": "Diagnostyka",
+      "website": "https://diag.pl",
+      "sector": "product_warsaw",
+      "note": "Healthcare"
+    },
+    {
+      "name": "Lingaro",
+      "website": "https://lingaro.com",
+      "sector": "product_warsaw",
+      "note": "Data and AI consultancy (former client)"
+    },
+    {
+      "name": "Billennium",
+      "website": "https://billennium.com",
+      "sector": "product_warsaw",
+      "note": "IT services"
+    },
+    {
+      "name": "Comarch",
+      "website": "https://comarch.com",
+      "sector": "product_warsaw",
+      "note": "Software; design"
+    },
+    {
+      "name": "Asseco",
+      "website": "https://asseco.com",
+      "sector": "product_warsaw",
+      "note": "Software"
+    },
+    {
+      "name": "Sii Polska",
+      "website": "https://sii.pl",
+      "sector": "product_warsaw",
+      "note": "IT services; UX roles"
+    },
+    {
+      "name": "Deloitte Digital",
+      "website": "https://deloitte.com",
+      "sector": "product_warsaw",
+      "note": "Design and creative technology"
+    },
+    {
+      "name": "Accenture Song",
+      "website": "https://accenture.com",
+      "sector": "product_warsaw",
+      "note": "Creative and design roles in Warsaw"
+    },
+    {
+      "name": "EY",
+      "website": "https://ey.com",
+      "sector": "product_warsaw",
+      "note": "Consulting; design and AI"
+    },
+    {
+      "name": "PwC",
+      "website": "https://pwc.pl",
+      "sector": "product_warsaw",
+      "note": "Consulting; experience design"
+    },
+    {
+      "name": "KPMG",
+      "website": "https://kpmg.com",
+      "sector": "product_warsaw",
+      "note": "Consulting"
+    },
+    {
+      "name": "Capgemini",
+      "website": "https://capgemini.com",
+      "sector": "product_warsaw",
+      "note": "Invent: design roles in Poland"
+    },
+    {
+      "name": "Thoughtworks",
+      "website": "https://thoughtworks.com",
+      "sector": "product_warsaw",
+      "note": "Design roles"
+    },
+    {
+      "name": "EPAM",
+      "website": "https://epam.com",
+      "sector": "product_warsaw",
+      "note": "Design roles in Poland"
+    },
+    {
+      "name": "Luxoft",
+      "website": "https://luxoft.com",
+      "sector": "product_warsaw",
+      "note": "IT services"
+    },
+    {
+      "name": "VML Poland",
+      "website": "https://vml.com",
+      "sector": "agency",
+      "note": "Global agency; Warsaw"
+    },
+    {
+      "name": "Ogilvy Poland",
+      "website": "https://ogilvy.com",
+      "sector": "agency",
+      "note": "Agency; Warsaw"
+    },
+    {
+      "name": "Publicis Groupe",
+      "website": "https://publicisgroupe.com",
+      "sector": "agency",
+      "note": "Saatchi, Leo, Publicis; Warsaw"
+    },
+    {
+      "name": "Havas",
+      "website": "https://havas.com",
+      "sector": "agency",
+      "note": "Agency; Warsaw"
+    },
+    {
+      "name": "DDB",
+      "website": "https://ddb.com",
+      "sector": "agency",
+      "note": "Agency"
+    },
+    {
+      "name": "McCann",
+      "website": "https://mccann.com",
+      "sector": "agency",
+      "note": "Agency; Warsaw"
+    },
+    {
+      "name": "BBDO",
+      "website": "https://bbdo.com",
+      "sector": "agency",
+      "note": "Agency"
+    },
+    {
+      "name": "TBWA",
+      "website": "https://tbwa.com",
+      "sector": "agency",
+      "note": "Agency"
+    },
+    {
+      "name": "Grey",
+      "website": "https://grey.com",
+      "sector": "agency",
+      "note": "Agency"
+    },
+    {
+      "name": "Dentsu",
+      "website": "https://dentsu.com",
+      "sector": "agency",
+      "note": "Creative and media; Warsaw"
+    },
+    {
+      "name": "WPP",
+      "website": "https://wpp.com",
+      "sector": "agency",
+      "note": "Group careers"
+    },
+    {
+      "name": "Interpublic Group",
+      "website": "https://interpublic.com",
+      "sector": "agency",
+      "note": "Group careers"
+    },
+    {
+      "name": "Omnicom",
+      "website": "https://omnicomgroup.com",
+      "sector": "agency",
+      "note": "Group careers"
+    },
+    {
+      "name": "Monks",
+      "website": "https://monks.com",
+      "sector": "agency",
+      "note": "Digital and AI-first creative; remote roles"
+    },
+    {
+      "name": "R/GA",
+      "website": "https://rga.com",
+      "sector": "agency",
+      "note": "Creative and technology"
+    },
+    {
+      "name": "AKQA",
+      "website": "https://akqa.com",
+      "sector": "agency",
+      "note": "Design and innovation"
+    },
+    {
+      "name": "Huge",
+      "website": "https://hugeinc.com",
+      "sector": "agency",
+      "note": "Digital agency"
+    },
+    {
+      "name": "Wolff Olins",
+      "website": "https://wolffolins.com",
+      "sector": "agency",
+      "note": "Brand consultancy"
+    },
+    {
+      "name": "Landor",
+      "website": "https://landor.com",
+      "sector": "agency",
+      "note": "Brand consultancy"
+    },
+    {
+      "name": "Pentagram",
+      "website": "https://pentagram.com",
+      "sector": "agency",
+      "note": "Design studio"
+    },
+    {
+      "name": "Interbrand",
+      "website": "https://interbrand.com",
+      "sector": "agency",
+      "note": "Brand consultancy"
+    },
+    {
+      "name": "Siegel+Gale",
+      "website": "https://siegelgale.com",
+      "sector": "agency",
+      "note": "Brand consultancy"
+    },
+    {
+      "name": "Jung von Matt",
+      "website": "https://jvm.com",
+      "sector": "agency",
+      "note": "Agency"
+    },
+    {
+      "name": "Serviceplan",
+      "website": "https://serviceplan.com",
+      "sector": "agency",
+      "note": "Agency"
+    },
+    {
+      "name": "Ars Thanea",
+      "website": "https://arsthanea.com",
+      "sector": "agency",
+      "note": "Warsaw creative studio; CGI and AI"
+    },
+    {
+      "name": "Plej",
+      "website": "https://plej.pl",
+      "sector": "agency",
+      "note": "Warsaw agency"
+    },
+    {
+      "name": "Mamastudio",
+      "website": "https://mamastudio.pl",
+      "sector": "agency",
+      "note": "Warsaw design studio"
+    },
+    {
+      "name": "Brand Nature",
+      "website": "https://brandnature.pl",
+      "sector": "agency",
+      "note": "Warsaw brand agency"
+    },
+    {
+      "name": "Gong",
+      "website": "https://gong.pl",
+      "sector": "agency",
+      "note": "Polish agency"
+    },
+    {
+      "name": "Change Integrated",
+      "website": "https://changeintegrated.pl",
+      "sector": "agency",
+      "note": "Warsaw agency"
+    },
+    {
+      "name": "Isobar Poland",
+      "website": "https://isobar.com",
+      "sector": "agency",
+      "note": "Digital agency"
+    },
+    {
+      "name": "K2 Precise",
+      "website": "https://k2.pl",
+      "sector": "agency",
+      "note": "Polish digital agency"
+    },
+    {
+      "name": "Bridge2Fun",
+      "website": "https://bridge2fun.com",
+      "sector": "agency",
+      "note": "Warsaw agency"
+    },
+    {
+      "name": "Fabryka Komunikacji Społecznej",
+      "website": "https://fks.com.pl",
+      "sector": "agency",
+      "note": "Warsaw agency"
+    },
+    {
+      "name": "Hand Made",
+      "website": "https://handmade.pl",
+      "sector": "agency",
+      "note": "Warsaw agency"
+    },
+    {
+      "name": "Papaya Films",
+      "website": "https://papayafilms.com",
+      "sector": "agency",
+      "note": "Warsaw production company"
+    },
+    {
+      "name": "Platige Image",
+      "website": "https://platige.com",
+      "sector": "agency",
+      "note": "Warsaw VFX and animation studio"
+    },
+    {
+      "name": "Juice",
+      "website": "https://juice.pl",
+      "sector": "agency",
+      "note": "Warsaw production and design"
+    },
+    {
+      "name": "Instrument",
+      "website": "https://instrument.com",
+      "sector": "agency",
+      "note": "Digital agency"
+    },
+    {
+      "name": "Media.Monks",
+      "website": "https://mediamonks.com",
+      "sector": "agency",
+      "note": "Production and AI"
+    },
+    {
+      "name": "Stink Studios",
+      "website": "https://stinkstudios.com",
+      "sector": "agency",
+      "note": "Creative studio"
+    },
+    {
+      "name": "ManvsMachine",
+      "website": "https://mvsm.com",
+      "sector": "agency",
+      "note": "Motion design studio"
+    },
+    {
+      "name": "Buck",
+      "website": "https://buck.co",
+      "sector": "agency",
+      "note": "Motion design studio"
+    },
+    {
+      "name": "Tendril",
+      "website": "https://tendril.com",
+      "sector": "agency",
+      "note": "Design and animation"
+    },
+    {
+      "name": "Superunion",
+      "website": "https://superunion.com",
+      "sector": "agency",
+      "note": "Brand consultancy"
+    },
+    {
+      "name": "Koto",
+      "website": "https://koto.studio",
+      "sector": "agency",
+      "note": "Brand studio; London, Berlin"
+    },
+    {
+      "name": "Collins",
+      "website": "https://wearecollins.com",
+      "sector": "agency",
+      "note": "Brand studio"
+    },
+    {
+      "name": "DesignStudio",
+      "website": "https://design.studio",
+      "sector": "agency",
+      "note": "Brand studio"
+    },
+    {
+      "name": "Ragged Edge",
+      "website": "https://raggededge.com",
+      "sector": "agency",
+      "note": "Brand studio"
+    },
+    {
+      "name": "Order",
+      "website": "https://order.design",
+      "sector": "agency",
+      "note": "Design studio"
+    },
+    {
+      "name": "Area 17",
+      "website": "https://area17.com",
+      "sector": "agency",
+      "note": "Digital agency"
+    },
+    {
+      "name": "Frog",
+      "website": "https://frog.co",
+      "sector": "agency",
+      "note": "Design consultancy"
+    },
+    {
+      "name": "IDEO",
+      "website": "https://ideo.com",
+      "sector": "agency",
+      "note": "Design consultancy"
+    },
+    {
+      "name": "The Mill",
+      "website": "https://themill.com",
+      "sector": "agency",
+      "note": "VFX and creative technology"
+    },
+    {
+      "name": "Framestore",
+      "website": "https://framestore.com",
+      "sector": "agency",
+      "note": "VFX"
+    },
+    {
+      "name": "Unit9",
+      "website": "https://unit9.com",
+      "sector": "agency",
+      "note": "Production and creative technology"
+    },
+    {
+      "name": "Resn",
+      "website": "https://resn.co.nz",
+      "sector": "agency",
+      "note": "Interactive studio"
+    },
+    {
+      "name": "Active Theory",
+      "website": "https://activetheory.net",
+      "sector": "agency",
+      "note": "Creative technology studio"
+    },
+    {
+      "name": "Locomotive",
+      "website": "https://locomotive.ca",
+      "sector": "agency",
+      "note": "Digital studio"
+    },
+    {
+      "name": "Netflix",
+      "website": "https://netflix.com",
+      "sector": "in_house",
+      "note": "Brand and creative roles"
+    },
+    {
+      "name": "Nike",
+      "website": "https://nike.com",
+      "sector": "in_house",
+      "note": "Brand creative"
+    },
+    {
+      "name": "adidas",
+      "website": "https://adidas-group.com",
+      "sector": "in_house",
+      "note": "Brand creative"
+    },
+    {
+      "name": "Red Bull",
+      "website": "https://redbull.com",
+      "sector": "in_house",
+      "note": "Media house and brand"
+    },
+    {
+      "name": "Coca-Cola HBC",
+      "website": "https://coca-colahellenic.com",
+      "sector": "in_house",
+      "note": "Brand teams in Poland"
+    },
+    {
+      "name": "Carlsberg Polska",
+      "website": "https://carlsbergpolska.pl",
+      "sector": "in_house",
+      "note": "Brand"
+    },
+    {
+      "name": "Kompania Piwowarska",
+      "website": "https://kp.pl",
+      "sector": "in_house",
+      "note": "Brand"
+    },
+    {
+      "name": "Maspex",
+      "website": "https://maspex.com",
+      "sector": "in_house",
+      "note": "Polish brands; marketing"
+    },
+    {
+      "name": "Ferrero",
+      "website": "https://ferrero.com",
+      "sector": "in_house",
+      "note": "Brand"
+    },
+    {
+      "name": "Inglot",
+      "website": "https://inglotcosmetics.com",
+      "sector": "in_house",
+      "note": "Polish cosmetics brand"
+    },
+    {
+      "name": "Ziaja",
+      "website": "https://ziaja.com",
+      "sector": "in_house",
+      "note": "Cosmetics"
+    },
+    {
+      "name": "Answear",
+      "website": "https://answear.com",
+      "sector": "in_house",
+      "note": "Fashion e-commerce from Kraków"
+    },
+    {
+      "name": "Modivo",
+      "website": "https://modivo.com",
+      "sector": "in_house",
+      "note": "Fashion e-commerce"
+    },
+    {
+      "name": "Vistula Group",
+      "website": "https://vistula.pl",
+      "sector": "in_house",
+      "note": "Fashion; W.Kruk, Vistula"
+    },
+    {
+      "name": "Mediaexpert",
+      "website": "https://mediaexpert.pl",
+      "sector": "in_house",
+      "note": "Electronics retail"
+    },
+    {
+      "name": "RTV Euro AGD",
+      "website": "https://euro.com.pl",
+      "sector": "in_house",
+      "note": "Electronics retail"
+    },
+    {
+      "name": "Media Markt",
+      "website": "https://mediamarkt.pl",
+      "sector": "in_house",
+      "note": "Electronics retail"
+    },
+    {
+      "name": "Booking.com",
+      "website": "https://booking.com",
+      "sector": "in_house",
+      "note": "Design and brand"
+    },
+    {
+      "name": "Airbnb",
+      "website": "https://airbnb.com",
+      "sector": "in_house",
+      "note": "Design"
+    },
+    {
+      "name": "Uber Eats",
+      "website": "https://ubereats.com",
+      "sector": "in_house",
+      "note": "Brand"
+    },
+    {
+      "name": "Lego",
+      "website": "https://lego.com",
+      "sector": "in_house",
+      "note": "Creative roles"
+    },
+    {
+      "name": "H&M Group",
+      "website": "https://hmgroup.com",
+      "sector": "in_house",
+      "note": "In-house creative"
+    },
+    {
+      "name": "Inditex",
+      "website": "https://inditex.com",
+      "sector": "in_house",
+      "note": "Creative"
+    },
+    {
+      "name": "Ubisoft",
+      "website": "https://ubisoft.com",
+      "sector": "in_house",
+      "note": "Creative and marketing"
+    },
+    {
+      "name": "Riot Games",
+      "website": "https://riotgames.com",
+      "sector": "in_house",
+      "note": "Creative"
+    },
+    {
+      "name": "Sony",
+      "website": "https://sony.com",
+      "sector": "in_house",
+      "note": "Creative"
+    },
+    {
+      "name": "Electronic Arts",
+      "website": "https://ea.com",
+      "sector": "in_house",
+      "note": "Creative"
+    },
+    {
+      "name": "King",
+      "website": "https://king.com",
+      "sector": "in_house",
+      "note": "Creative"
+    },
+    {
+      "name": "Rovio",
+      "website": "https://rovio.com",
+      "sector": "in_house",
+      "note": "Creative"
+    },
+    {
+      "name": "Wise",
+      "website": "https://wise.com",
+      "sector": "in_house",
+      "note": "Brand design; Europe"
+    },
+    {
+      "name": "Monzo",
+      "website": "https://monzo.com",
+      "sector": "in_house",
+      "note": "Brand design"
+    },
+    {
+      "name": "N26",
+      "website": "https://n26.com",
+      "sector": "in_house",
+      "note": "Brand design"
+    },
+    {
+      "name": "Klarna",
+      "website": "https://klarna.com",
+      "sector": "in_house",
+      "note": "Brand and AI"
+    },
+    {
+      "name": "Personio",
+      "website": "https://personio.com",
+      "sector": "in_house",
+      "note": "Brand and design; Europe"
+    },
+    {
+      "name": "Celonis",
+      "website": "https://celonis.com",
+      "sector": "in_house",
+      "note": "Brand"
+    },
+    {
+      "name": "SAP",
+      "website": "https://sap.com",
+      "sector": "in_house",
+      "note": "Design; Warsaw office"
+    },
+    {
+      "name": "Siemens",
+      "website": "https://siemens.com",
+      "sector": "in_house",
+      "note": "Design"
+    },
+    {
+      "name": "Volkswagen Digital Solutions",
+      "website": "https://vwds.pl",
+      "sector": "in_house",
+      "note": "Digital in Poland"
+    },
+    {
+      "name": "BMW Group",
+      "website": "https://bmwgroup.com",
+      "sector": "in_house",
+      "note": "Design"
+    },
+    {
+      "name": "Mercedes-Benz",
+      "website": "https://mercedes-benz.com",
+      "sector": "in_house",
+      "note": "Design"
+    },
+    {
+      "name": "Philips",
+      "website": "https://philips.com",
+      "sector": "in_house",
+      "note": "Design"
+    },
+    {
+      "name": "Electrolux",
+      "website": "https://electroluxgroup.com",
+      "sector": "in_house",
+      "note": "Design; Poland"
+    },
+    {
+      "name": "CBRE",
+      "website": "https://cbre.com",
+      "sector": "real_estate",
+      "note": "Commercial real estate; Warsaw; leasing, marketing and AI roles"
+    },
+    {
+      "name": "JLL",
+      "website": "https://jll.com",
+      "sector": "real_estate",
+      "note": "Commercial real estate; Warsaw"
+    },
+    {
+      "name": "Colliers",
+      "website": "https://colliers.com",
+      "sector": "real_estate",
+      "note": "Commercial real estate; Warsaw"
+    },
+    {
+      "name": "Cushman & Wakefield",
+      "website": "https://cushmanwakefield.com",
+      "sector": "real_estate",
+      "note": "Commercial real estate; Warsaw"
+    },
+    {
+      "name": "Knight Frank",
+      "website": "https://knightfrank.com",
+      "sector": "real_estate",
+      "note": "Real estate advisory; Warsaw"
+    },
+    {
+      "name": "Savills",
+      "website": "https://savills.com",
+      "sector": "real_estate",
+      "note": "Real estate advisory; Warsaw"
+    },
+    {
+      "name": "Avison Young",
+      "website": "https://avisonyoung.com",
+      "sector": "real_estate",
+      "note": "Commercial real estate"
+    },
+    {
+      "name": "Newmark",
+      "website": "https://nmrk.com",
+      "sector": "real_estate",
+      "note": "Commercial real estate"
+    },
+    {
+      "name": "Echo Investment",
+      "website": "https://echo.com.pl",
+      "sector": "real_estate",
+      "note": "Developer; Kielce and Warsaw"
+    },
+    {
+      "name": "Dom Development",
+      "website": "https://domd.pl",
+      "sector": "real_estate",
+      "note": "Residential developer; Warsaw"
+    },
+    {
+      "name": "Robyg",
+      "website": "https://robyg.pl",
+      "sector": "real_estate",
+      "note": "Residential developer; Warsaw"
+    },
+    {
+      "name": "Murapol",
+      "website": "https://murapol.pl",
+      "sector": "real_estate",
+      "note": "Residential developer"
+    },
+    {
+      "name": "Atal",
+      "website": "https://atal.pl",
+      "sector": "real_estate",
+      "note": "Residential developer"
+    },
+    {
+      "name": "Archicom",
+      "website": "https://archicom.pl",
+      "sector": "real_estate",
+      "note": "Developer; Wrocław"
+    },
+    {
+      "name": "Ghelamco",
+      "website": "https://ghelamco.pl",
+      "sector": "real_estate",
+      "note": "Office developer; Warsaw"
+    },
+    {
+      "name": "Skanska",
+      "website": "https://skanska.pl",
+      "sector": "real_estate",
+      "note": "Developer and construction"
+    },
+    {
+      "name": "Ronson Development",
+      "website": "https://ronson.pl",
+      "sector": "real_estate",
+      "note": "Residential developer"
+    },
+    {
+      "name": "Victoria Dom",
+      "website": "https://victoriadom.pl",
+      "sector": "real_estate",
+      "note": "Residential developer"
+    },
+    {
+      "name": "Develia",
+      "website": "https://develia.pl",
+      "sector": "real_estate",
+      "note": "Developer"
+    },
+    {
+      "name": "Budimex Nieruchomości",
+      "website": "https://budimex.pl",
+      "sector": "real_estate",
+      "note": "Construction and development"
+    },
+    {
+      "name": "Yareal",
+      "website": "https://yareal.com",
+      "sector": "real_estate",
+      "note": "Developer; Warsaw"
+    },
+    {
+      "name": "Cordia",
+      "website": "https://cordia.pl",
+      "sector": "real_estate",
+      "note": "Developer"
+    },
+    {
+      "name": "Vantage Development",
+      "website": "https://vantage-development.pl",
+      "sector": "real_estate",
+      "note": "Developer"
+    },
+    {
+      "name": "Panattoni",
+      "website": "https://panattoni.com",
+      "sector": "real_estate",
+      "note": "Industrial developer"
+    },
+    {
+      "name": "Prologis",
+      "website": "https://prologis.com",
+      "sector": "real_estate",
+      "note": "Logistics real estate"
+    },
+    {
+      "name": "Globalworth",
+      "website": "https://globalworth.com",
+      "sector": "real_estate",
+      "note": "Office landlord; Warsaw"
+    },
+    {
+      "name": "Hines",
+      "website": "https://hines.com",
+      "sector": "real_estate",
+      "note": "Real estate investor"
+    },
+    {
+      "name": "Metrohouse",
+      "website": "https://metrohouse.pl",
+      "sector": "real_estate",
+      "note": "Residential agency network"
+    },
+    {
+      "name": "Freedom Nieruchomości",
+      "website": "https://freedom.pl",
+      "sector": "real_estate",
+      "note": "Residential agency"
+    },
+    {
+      "name": "Home Broker",
+      "website": "https://homebroker.pl",
+      "sector": "real_estate",
+      "note": "Residential agency"
+    },
+    {
+      "name": "Otodom",
+      "website": "https://otodom.pl",
+      "sector": "real_estate",
+      "note": "Property portal (OLX Group)"
+    },
+    {
+      "name": "Morizon-Gratka",
+      "website": "https://morizon.pl",
+      "sector": "real_estate",
+      "note": "Property portal"
+    },
+    {
+      "name": "Nieruchomości-online",
+      "website": "https://nieruchomosci-online.pl",
+      "sector": "real_estate",
+      "note": "Property portal"
+    },
+    {
+      "name": "Engel & Völkers",
+      "website": "https://engelvoelkers.com",
+      "sector": "real_estate",
+      "note": "Premium residential agency"
+    },
+    {
+      "name": "Sotheby's International Realty",
+      "website": "https://sothebysrealty.com",
+      "sector": "real_estate",
+      "note": "Luxury residential"
+    },
+    {
+      "name": "RE/MAX Polska",
+      "website": "https://remax-polska.pl",
+      "sector": "real_estate",
+      "note": "Agency network"
+    },
+    {
+      "name": "Resi4Rent",
+      "website": "https://resi4rent.pl",
+      "sector": "real_estate",
+      "note": "Build-to-rent"
+    },
+    {
+      "name": "Vonder",
+      "website": "https://vonder.pl",
+      "sector": "real_estate",
+      "note": "Co-living"
+    },
+    {
+      "name": "Heimstaden Polska",
+      "website": "https://heimstaden.com",
+      "sector": "real_estate",
+      "note": "Rental housing"
+    },
+    {
+      "name": "Salesforce",
+      "website": "https://salesforce.com",
+      "sector": "sales_saas",
+      "note": "CRM; Warsaw sales roles"
+    },
+    {
+      "name": "HubSpot",
+      "website": "https://hubspot.com",
+      "sector": "sales_saas",
+      "note": "CRM; Dublin and remote sales"
+    },
+    {
+      "name": "Pipedrive",
+      "website": "https://pipedrive.com",
+      "sector": "sales_saas",
+      "note": "CRM; Europe"
+    },
+    {
+      "name": "Zendesk",
+      "website": "https://zendesk.com",
+      "sector": "sales_saas",
+      "note": "Customer service; Kraków"
+    },
+    {
+      "name": "Monday.com",
+      "website": "https://monday.com",
+      "sector": "sales_saas",
+      "note": "Work management; sales roles"
+    },
+    {
+      "name": "Atlassian",
+      "website": "https://atlassian.com",
+      "sector": "sales_saas",
+      "note": "Remote-friendly"
+    },
+    {
+      "name": "Asana",
+      "website": "https://asana.com",
+      "sector": "sales_saas",
+      "note": "Work management"
+    },
+    {
+      "name": "Gong.io",
+      "website": "https://gong.io",
+      "sector": "sales_saas",
+      "note": "Revenue AI"
+    },
+    {
+      "name": "Outreach",
+      "website": "https://outreach.io",
+      "sector": "sales_saas",
+      "note": "Sales engagement"
+    },
+    {
+      "name": "Calendly",
+      "website": "https://calendly.com",
+      "sector": "sales_saas",
+      "note": "Scheduling; remote"
+    },
+    {
+      "name": "Docusign",
+      "website": "https://docusign.com",
+      "sector": "sales_saas",
+      "note": "E-signature; sales"
+    },
+    {
+      "name": "Dropbox",
+      "website": "https://dropbox.com",
+      "sector": "sales_saas",
+      "note": "Remote-first"
+    },
+    {
+      "name": "Box",
+      "website": "https://box.com",
+      "sector": "sales_saas",
+      "note": "Content cloud"
+    },
+    {
+      "name": "Snowflake",
+      "website": "https://snowflake.com",
+      "sector": "sales_saas",
+      "note": "Data cloud; Warsaw office"
+    },
+    {
+      "name": "Databricks",
+      "website": "https://databricks.com",
+      "sector": "sales_saas",
+      "note": "Data and AI"
+    },
+    {
+      "name": "ServiceNow",
+      "website": "https://servicenow.com",
+      "sector": "sales_saas",
+      "note": "Platform; Poland sales"
+    },
+    {
+      "name": "Oracle",
+      "website": "https://oracle.com",
+      "sector": "sales_saas",
+      "note": "Sales roles in Warsaw"
+    },
+    {
+      "name": "IBM",
+      "website": "https://ibm.com",
+      "sector": "sales_saas",
+      "note": "Consulting and sales"
+    },
+    {
+      "name": "Cisco",
+      "website": "https://cisco.com",
+      "sector": "sales_saas",
+      "note": "Kraków"
+    },
+    {
+      "name": "Dell Technologies",
+      "website": "https://dell.com",
+      "sector": "sales_saas",
+      "note": "Sales; Łódź"
+    },
+    {
+      "name": "HP",
+      "website": "https://hp.com",
+      "sector": "sales_saas",
+      "note": "Sales"
+    },
+    {
+      "name": "Stripe",
+      "website": "https://stripe.com",
+      "sector": "sales_saas",
+      "note": "Payments; partnerships"
+    },
+    {
+      "name": "Adyen",
+      "website": "https://adyen.com",
+      "sector": "sales_saas",
+      "note": "Payments; sales"
+    },
+    {
+      "name": "Checkout.com",
+      "website": "https://checkout.com",
+      "sector": "sales_saas",
+      "note": "Payments; Warsaw"
+    },
+    {
+      "name": "PayU",
+      "website": "https://payu.com",
+      "sector": "sales_saas",
+      "note": "Payments; Poznań and Warsaw"
+    },
+    {
+      "name": "Przelewy24",
+      "website": "https://przelewy24.pl",
+      "sector": "sales_saas",
+      "note": "Payments"
+    },
+    {
+      "name": "Livespace",
+      "website": "https://livespace.io",
+      "sector": "sales_saas",
+      "note": "Polish CRM"
+    },
+    {
+      "name": "Sotrender",
+      "website": "https://sotrender.com",
+      "sector": "sales_saas",
+      "note": "Social analytics"
+    },
+    {
+      "name": "Landingi",
+      "website": "https://landingi.com",
+      "sector": "sales_saas",
+      "note": "Landing pages; Polish SaaS"
+    },
+    {
+      "name": "GetResponse",
+      "website": "https://getresponse.com",
+      "sector": "sales_saas",
+      "note": "Email marketing; Gdańsk"
+    },
+    {
+      "name": "SALESmanago",
+      "website": "https://salesmanago.com",
+      "sector": "sales_saas",
+      "note": "Marketing automation; Kraków"
+    },
+    {
+      "name": "Callpage",
+      "website": "https://callpage.io",
+      "sector": "sales_saas",
+      "note": "Sales SaaS"
+    },
+    {
+      "name": "Growth Collective",
+      "website": "https://growthcollective.com",
+      "sector": "sales_saas",
+      "note": "Marketing talent network"
+    },
+    {
+      "name": "Semrush",
+      "website": "https://semrush.com",
+      "sector": "sales_saas",
+      "note": "Marketing SaaS; remote roles in Europe"
+    },
+    {
+      "name": "Similarweb",
+      "website": "https://similarweb.com",
+      "sector": "sales_saas",
+      "note": "Digital intelligence"
+    },
+    {
+      "name": "Contentsquare",
+      "website": "https://contentsquare.com",
+      "sector": "sales_saas",
+      "note": "Digital experience"
+    },
+    {
+      "name": "Bynder",
+      "website": "https://bynder.com",
+      "sector": "sales_saas",
+      "note": "Brand asset management; Amsterdam"
+    },
+    {
+      "name": "Frontify",
+      "website": "https://frontify.com",
+      "sector": "sales_saas",
+      "note": "Brand management; Europe"
+    },
+    {
+      "name": "Brandfolder",
+      "website": "https://brandfolder.com",
+      "sector": "sales_saas",
+      "note": "Brand asset management"
+    },
+    {
+      "name": "Celtra",
+      "website": "https://celtra.com",
+      "sector": "sales_saas",
+      "note": "Creative automation"
+    },
+    {
+      "name": "Smartly",
+      "website": "https://smartly.io",
+      "sector": "sales_saas",
+      "note": "Creative ad tech; Europe"
+    },
+    {
+      "name": "Storyteq",
+      "website": "https://storyteq.com",
+      "sector": "sales_saas",
+      "note": "Creative automation"
+    },
+    {
+      "name": "Bannerflow",
+      "website": "https://bannerflow.com",
+      "sector": "sales_saas",
+      "note": "Creative ad tech; Stockholm"
+    },
+    {
+      "name": "Templafy",
+      "website": "https://templafy.com",
+      "sector": "sales_saas",
+      "note": "Document generation"
+    },
+    {
+      "name": "Seismic",
+      "website": "https://seismic.com",
+      "sector": "sales_saas",
+      "note": "Sales enablement"
+    },
+    {
+      "name": "Highspot",
+      "website": "https://highspot.com",
+      "sector": "sales_saas",
+      "note": "Sales enablement"
+    },
+    {
+      "name": "Showpad",
+      "website": "https://showpad.com",
+      "sector": "sales_saas",
+      "note": "Sales enablement"
+    }
+  ]
+}
