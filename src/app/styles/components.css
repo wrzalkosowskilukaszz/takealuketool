@@ -3149,3 +3149,73 @@ input[type="range"] {
     z-index: 70;
   }
 }
+
+/* Save to Studio (bookmarklet popup) */
+.save-page {
+  justify-content: flex-start;
+  gap: var(--space-5);
+  padding-top: var(--space-6);
+}
+
+.save-card {
+  width: min(520px, 100%);
+  padding: var(--space-6);
+}
+
+.save-card h1 {
+  font-size: 24px;
+}
+
+.save-card .textarea {
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.save-steps {
+  margin: 0;
+  padding-left: 1.3em;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  color: var(--text-secondary);
+}
+
+.login-card .save-bookmarklet {
+  cursor: grab;
+  text-transform: none;
+  letter-spacing: 0;
+}
+
+.save-fit {
+  display: flex;
+  gap: var(--space-4);
+  align-items: flex-start;
+}
+
+.save-score {
+  flex: none;
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: var(--sky);
+}
+
+.save-score strong {
+  font-size: 22px;
+  line-height: 1;
+}
+
+.save-score span {
+  font-size: 11px;
+  color: var(--text-secondary);
+}
+
+.save-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}

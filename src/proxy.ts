@@ -18,6 +18,8 @@ export function proxy(request: NextRequest) {
     const url = request.nextUrl.clone();
     url.pathname = "/login";
     url.search = "";
+    // Remember where to come back to (e.g. the "Save to Studio" page opened by the bookmarklet).
+    if (pathname !== "/" && pathname !== "/login") url.searchParams.set("next", pathname);
     return NextResponse.redirect(url);
   }
 

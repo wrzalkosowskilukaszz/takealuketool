@@ -1,12 +1,13 @@
 import { redirect } from "next/navigation";
 import { BrandLogo } from "@/components/brand";
-import { hasValidSession } from "@/server/auth/session";
+import { hasValidSession, safeNext } from "@/server/auth/session";
 import { LoginForm } from "./login-form";
 
 export const metadata = { title: "Sign in" };
 
-export default async function LoginPage() {
-  if (await hasValidSession()) redirect("/matches");
+export default async function LoginPage({ searchParams }: { searchParams: Promise<{ next?: string }> }) {
+  const next = safeNext((await searchParams).next);
+  if (await hasValidSession()) redirect(next ?? "/matches");
   return (
     <main className="login">
       <div className="login-brand">
@@ -23,7 +24,7 @@ export default async function LoginPage() {
           <h1>Sign in</h1>
           <p className="login-lead">Your private job-search studio.</p>
         </div>
-        <LoginForm />
+        <LoginForm next={next} />
       </div>
     </main>
   );
