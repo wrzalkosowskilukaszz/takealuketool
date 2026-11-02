@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 
-export function LoginForm() {
+export function LoginForm({ next }: { next?: string | null }) {
   const [error, setError] = useState<string | null>(null);
   const [busy, setBusy] = useState(false);
 
@@ -17,7 +17,8 @@ export function LoginForm() {
       body: JSON.stringify({ password }),
     }).catch(() => null);
     if (res?.ok) {
-      window.location.assign("/matches");
+      // Keep the #fragment: the bookmarklet passes the offer in it.
+      window.location.assign((next ?? "/matches") + window.location.hash);
       return;
     }
     const data = res ? await res.json().catch(() => ({})) : {};

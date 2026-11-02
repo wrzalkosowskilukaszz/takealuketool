@@ -91,8 +91,15 @@ export async function hasValidSession(): Promise<boolean> {
 }
 
 /** For server components / layouts: redirect to /login when not signed in. */
-export async function requireSession(): Promise<void> {
-  if (!(await hasValidSession())) redirect("/login");
+export async function requireSession(next?: string): Promise<void> {
+  if (!(await hasValidSession())) redirect(next ? `/login?next=${encodeURIComponent(next)}` : "/login");
+}
+
+/** A safe, same-site path to return to after signing in, or null. */
+export function safeNext(next: unknown): string | null {
+  if (typeof next !== "string" || !next.startsWith("/") || next.startsWith("//") || next.includes("\\"))
+    return null;
+  return next.slice(0, 200);
 }
 
 export class UnauthorizedError extends Error {}
