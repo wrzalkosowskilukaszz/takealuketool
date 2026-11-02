@@ -17,7 +17,7 @@ import {
   sql,
 } from "drizzle-orm";
 import { z } from "zod";
-import { adLanguage, extractCvKeywords } from "@/lib/jobs/match";
+import { AREAS, adLanguage, extractCvKeywords } from "@/lib/jobs/match";
 import { cvGap } from "@/lib/jobs/tailor";
 import { EXPLORE_FIELDS, STATUSES, TRACKS } from "@/lib/jobs/types";
 import { versionsForOffer } from "../cv/service.ts";
@@ -35,6 +35,8 @@ export type View = (typeof VIEWS)[number];
 
 export const Filters = z.object({
   q: z.string().max(200).optional(),
+  /** Matches tab: Poland, European Union or Rest of the world. */
+  area: z.enum(AREAS).optional(),
   tracks: z.array(z.enum(TRACKS)).optional(),
   fields: z.array(z.enum(EXPLORE_FIELDS)).optional(),
   minScore: z.number().int().min(0).max(100).optional(),
@@ -89,6 +91,7 @@ function filterWhere(f: Filters): SQL[] {
       ) as SQL,
     );
   }
+  if (f.area) w.push(sql`${jobOffers.match}->>'area' = ${f.area}`);
   if (f.tracks?.length) w.push(inArray(jobOffers.track, f.tracks));
   if (f.fields?.length) w.push(inArray(jobOffers.field, f.fields));
   if (f.minScore) w.push(gte(jobOffers.score, f.minScore));
@@ -214,6 +217,18 @@ export async function listJobs(opts: { screen: Screen; view: View; filters: Filt
       .where(and(viewWhere(opts.screen, v, showFrom), ...filterWhere(opts.filters)));
     counts[v] = c?.n ?? 0;
   }
+  // Tab counts for the current view and filters, whatever tab is open.
+  const byArea = await db()
+    .select({ area: sql<string>`${jobOffers.match}->>'area'`, n: count() })
+    .from(jobOffers)
+    .innerJoin(jobSources, eq(jobSources.id, jobOffers.sourceId))
+    .leftJoin(companies, eq(companies.id, jobOffers.companyId))
+    .where(
+      and(viewWhere(opts.screen, opts.view, showFrom), ...filterWhere({ ...opts.filters, area: undefined })),
+    )
+    .groupBy(sql`${jobOffers.match}->>'area'`);
+  const areaCounts: Record<string, number> = {};
+  for (const a of byArea) areaCounts[a.area ?? "world"] = (areaCounts[a.area ?? "world"] ?? 0) + a.n;
   const [stats] = await db()
     .select({
       saved: sql<number>`count(*) filter (where ${jobOffers.status} = 'saved')::int`,
@@ -226,6 +241,7 @@ export async function listJobs(opts: { screen: Screen; view: View; filters: Filt
   return {
     rows: rows.map(serialize),
     counts,
+    areaCounts,
     stats: stats ?? { saved: 0, applied: 0, interviews: 0, newToday: 0 },
     showFrom,
     sync: await syncSummary(),
@@ -479,7 +495,7 @@ export async function addManualJob(input: {
       ...prefs,
       tracks: [...TRACKS],
       exploreFields: [...EXPLORE_FIELDS],
-      locations: ["warsaw", "poland_other", "remote_poland"],
+      locations: ["warsaw", "poland_other", "remote_poland", "eu", "world"],
     },
   );
   const [row] = await db()

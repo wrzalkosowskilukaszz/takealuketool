@@ -13,7 +13,7 @@ export const PUT = api(async (req) => {
       .object({
         tracks: z.array(z.enum(TRACKS)),
         exploreFields: z.array(z.enum(EXPLORE_FIELDS)),
-        locations: z.array(z.enum(["warsaw", "poland_other", "remote_poland"])),
+        locations: z.array(z.enum(["warsaw", "poland_other", "remote_poland", "eu", "world"])),
         languages: z.array(z.string().max(5)),
         workTypes: z.array(z.enum(["full_time", "freelance", "part_time"])),
         extraKeywords: words,

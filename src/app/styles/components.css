@@ -327,6 +327,53 @@
   text-decoration: none;
 }
 
+.subnav button {
+  padding: 9px 18px;
+  border: 0;
+  border-radius: 10px;
+  background: none;
+  color: var(--text-secondary);
+  font: inherit;
+  font-weight: var(--weight-medium);
+  font-size: var(--text-md);
+  cursor: pointer;
+}
+
+.subnav button:hover {
+  color: var(--text);
+  background: var(--surface-sunken);
+}
+
+.subnav button[aria-selected="true"] {
+  color: var(--accent);
+  background: var(--accent-soft);
+  font-weight: var(--weight-semibold);
+}
+
+.area-tabs .views-count {
+  margin-left: 6px;
+  opacity: 0.7;
+  font-variant-numeric: tabular-nums;
+}
+
+.area-tabs button {
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+@media (max-width: 640px) {
+  .area-tabs button {
+    padding: 8px 12px;
+  }
+}
+
+.area-tabs {
+  margin-bottom: 0;
+  align-self: flex-start;
+  max-width: 100%;
+  overflow-x: auto;
+}
+
 .subnav a[aria-current="page"] {
   color: var(--accent);
   background: var(--accent-soft);

@@ -10,7 +10,7 @@ export default function MatchesPage() {
         <div>
           <h1>Matches</h1>
           <p>
-            Creative, design and AI roles in Warsaw, Poland and remote, scored against your CV. Includes roles
+            Creative, design and AI roles in Poland, the EU and beyond, scored against your CV. Includes roles
             that take you beyond day-to-day Figma work.
           </p>
         </div>

@@ -17,7 +17,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { useToast } from "@/components/toast";
 import { Callout } from "@/components/ui";
 import { ApiError, apiFetch } from "@/lib/api-client";
-import { REGION_LABEL, type Region } from "@/lib/jobs/match";
+import { AREA_LABEL, type Area, PERMIT_LABEL, permitOf, REGION_LABEL, type Region } from "@/lib/jobs/match";
 import {
   FIELD_LABEL,
   FIGMA_LABEL,
@@ -337,6 +337,15 @@ export function OfferPanel({
                 {d.location ?? REGION_LABEL[d.match.region as Region] ?? "Not stated"}
                 {WORKPLACE[d.workplace] ? ` · ${WORKPLACE[d.workplace]}` : ""}
               </dd>
+              {d.match.area ? (
+                <>
+                  <dt>Work permit</dt>
+                  <dd>
+                    {PERMIT_LABEL[permitOf(d.match.region, d.match.area)]}
+                    <span className="muted"> · {AREA_LABEL[d.match.area as Area]}</span>
+                  </dd>
+                </>
+              ) : null}
               {d.salary ? (
                 <>
                   <dt>Pay</dt>
