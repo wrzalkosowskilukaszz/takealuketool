@@ -10,11 +10,11 @@ import { db } from "../db/client.ts";
 import { jobOffers } from "../db/schema.ts";
 import { badRequest, notFound } from "../http.ts";
 import { getSettings } from "../settings.ts";
-import { structured } from "./client.ts";
+import { clip, structured } from "./client.ts";
 
 const LetterSchema = z.object({
-  letter: z.string().max(6000),
-  checks: z.array(z.string().max(300)).max(6),
+  letter: z.string(),
+  checks: z.array(z.string()),
 });
 
 export type LetterLength = "short" | "standard";
@@ -61,11 +61,13 @@ ${o.ai?.angle ? `\nSuggested angle from the fit analysis: ${o.ai.angle}` : ""}${
     operation: "cover_letter",
   });
   const at = new Date();
+  const letter = clip(r.data.letter, 6000);
+  const checks = r.data.checks.slice(0, 6).map((c) => clip(c, 300));
   await db()
     .update(jobOffers)
-    .set({ coverLetter: r.data.letter, coverLetterLang: opts.language, coverLetterAt: at, updatedAt: at })
+    .set({ coverLetter: letter, coverLetterLang: opts.language, coverLetterAt: at, updatedAt: at })
     .where(eq(jobOffers.id, id));
-  return { letter: r.data.letter, checks: r.data.checks, at: at.toISOString() };
+  return { letter, checks, at: at.toISOString() };
 }
 
 export async function saveCoverLetter(id: string, text: string, language?: string | null) {

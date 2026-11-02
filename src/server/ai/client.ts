@@ -126,3 +126,12 @@ function fileBlock(f: { mediaType: string; data: Buffer }): Anthropic.Beta.BetaC
     },
   };
 }
+
+/** Shortens model text to `max` characters at a word boundary, adding an ellipsis when cut. */
+export function clip(s: string, max: number): string {
+  const t = s.trim();
+  if (t.length <= max) return t;
+  const cut = t.slice(0, max - 1);
+  const sp = cut.lastIndexOf(" ");
+  return `${(sp > max * 0.6 ? cut.slice(0, sp) : cut).trimEnd()}…`;
+}

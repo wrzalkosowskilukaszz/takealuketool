@@ -12,11 +12,11 @@ import { db } from "../db/client.ts";
 import { advisorMessages, jobOffers } from "../db/schema.ts";
 import { badRequest } from "../http.ts";
 import { getSettings } from "../settings.ts";
-import { structured } from "./client.ts";
+import { clip, structured } from "./client.ts";
 
 const AnswerSchema = z.object({
-  answer: z.string().max(6000),
-  links: z.array(z.object({ title: z.string().max(160), url: z.string().url().max(500) })).max(8),
+  answer: z.string(),
+  links: z.array(z.object({ title: z.string(), url: z.string() })),
 });
 
 export async function advisorThread(thread: string) {
@@ -111,6 +111,19 @@ Their question: ${q.slice(0, 2000)}`;
     .values({ thread, role: "user", content: q.slice(0, 4000) });
   await db()
     .insert(advisorMessages)
-    .values({ thread, role: "assistant", content: r.data.answer, links: r.data.links });
+    .values({
+      thread,
+      role: "assistant",
+      content: clip(r.data.answer, 6000),
+      links: cleanLinks(r.data.links),
+    });
   return advisorThread(thread);
+}
+
+/** Keeps up to 8 http(s) links with short titles; the output schema cannot enforce these limits. */
+function cleanLinks(links: { title: string; url: string }[]) {
+  return links
+    .filter((l) => /^https?:\/\/\S+$/i.test(l.url) && l.url.length <= 500)
+    .slice(0, 8)
+    .map((l) => ({ title: clip(l.title, 160), url: l.url }));
 }
