@@ -87,9 +87,12 @@ export function StepList({ steps }: { steps: Step[] }) {
 export function NewCv({
   baseSummary,
   aiReady,
+  uploadedCv,
 }: {
   baseSummary: { roles: number; confirmed: number; pending: number } | null;
   aiReady: boolean;
+  /** File name of the CV uploaded in Settings, when there is one. */
+  uploadedCv: string | null;
 }) {
   const router = useRouter();
   const [text, setText] = useState("");
@@ -192,12 +195,20 @@ export function NewCv({
             <span>Claude is not set up yet. Add ANTHROPIC_API_KEY in Vercel to write CVs.</span>
           </Callout>
         ) : null}
-        {aiReady && !baseSummary ? (
+        {aiReady && !baseSummary && uploadedCv ? (
+          <Callout tone="info">
+            <span>
+              No experience base yet: the first run builds it from your CV in Settings ({uploadedCv}). Every
+              fact comes from that CV, word for word.
+            </span>
+          </Callout>
+        ) : null}
+        {aiReady && !baseSummary && !uploadedCv ? (
           <Callout tone="bad">
             <span>
-              The button stays off until your experience base is loaded: CVs are written only from its facts.{" "}
-              <Link href="/cv/base">Open Experience base</Link> and use Import JSON (the Kreator export works
-              as it is).
+              The button stays off until there is something to write from. Upload your CV in{" "}
+              <Link href="/settings">Settings</Link>, or{" "}
+              <Link href="/cv/base">import your experience base</Link> (the Kreator export works as it is).
             </span>
           </Callout>
         ) : null}
@@ -206,7 +217,7 @@ export function NewCv({
             type="button"
             className="btn btn-primary"
             onClick={generate}
-            disabled={busy || !aiReady || !baseSummary}
+            disabled={busy || !aiReady || (!baseSummary && !uploadedCv)}
           >
             <Sparkles size={14} /> Write the CV
           </button>
@@ -239,7 +250,15 @@ export function NewCv({
             A separate fact-check reads every line against its sources and numbers. Doubtful lines are
             highlighted.
           </li>
-          <li>The version is saved. Edit it, copy it, or download it as Word or PDF.</li>
+          <li>
+            Final check: employers, titles, dates and contact details must match your base exactly, every line
+            needs a confirmed source and no number may appear that is not in your facts. Copy, Word and PDF
+            stay locked until the CV passes; after any edit, the check runs again.
+          </li>
+          <li>
+            The layout is always the same ATS-friendly one: standard section headings, plain text, one column.
+            Edit it, copy it, or download it as Word or PDF.
+          </li>
         </ol>
         <p className="xsmall muted" style={{ margin: 0 }}>
           Facts marked as an interpretation or “to confirm” never reach a CV.

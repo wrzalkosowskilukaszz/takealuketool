@@ -264,6 +264,8 @@ export const CvChecks = z.object({
   dismissed: z.array(z.string()).default([]),
   failed: z.boolean().optional(),
   at: z.string().optional(),
+  /** The CV text changed after the last fact-check: the check must run again before export. */
+  stale: z.boolean().optional(),
 });
 export type CvChecks = z.infer<typeof CvChecks>;
 
@@ -324,6 +326,81 @@ export function localChecks(cv: CvDoc, base: ExperienceBase): CvIssue[] {
 }
 
 export const issueKey = (i: Pick<CvIssue, "path" | "problem">) => `${i.path}|${i.problem}`;
+
+/**
+ * Hard data the model and the editor may never change: personal details and, for every role, the
+ * employer, title, contract and dates. Each is compared with the experience base.
+ */
+export function hardDataIssues(cv: CvDoc, base: ExperienceBase): string[] {
+  const out: string[] = [];
+  for (const k of ["name", "phone", "email", "linkedin", "website", "location"] as const)
+    if ((cv.personal[k] ?? "") !== (base.personal[k] ?? "")) out.push(`Personal data changed: ${k}.`);
+  const roles = new Map(base.roles.map((r) => [r.id, r]));
+  const seen = new Set<string>();
+  for (const e of cv.experience) {
+    const r = roles.get(e.role_id);
+    if (!r) {
+      out.push(`A role that is not in your base: ${e.title} — ${e.company}.`);
+      continue;
+    }
+    seen.add(r.id);
+    if (e.title !== r.title || e.company !== r.company)
+      out.push(`Employer or title changed: ${r.title} — ${r.company}.`);
+    if (e.start !== r.start || e.end !== r.end || e.dateFormat !== r.dateFormat)
+      out.push(`Dates changed: ${r.title} — ${r.company}.`);
+  }
+  for (const r of base.roles) if (!seen.has(r.id)) out.push(`A role is missing: ${r.title} — ${r.company}.`);
+  return out;
+}
+
+/** Puts the base's hard data back into a CV (personal details, employers, titles, dates). */
+export function lockHardData(cv: CvDoc, base: ExperienceBase): CvDoc {
+  const roles = new Map(base.roles.map((r) => [r.id, r]));
+  return {
+    ...cv,
+    personal: { ...base.personal },
+    experience: cv.experience
+      .filter((e) => roles.has(e.role_id))
+      .map((e) => {
+        const r = roles.get(e.role_id)!;
+        return {
+          ...e,
+          title: r.title,
+          company: r.company,
+          start: r.start,
+          end: r.end,
+          dateFormat: r.dateFormat,
+        };
+      }),
+  };
+}
+
+/**
+ * The final test a CV must pass before it can be copied, downloaded or printed. Rule breaks found by
+ * the app (no source, a number not in the sources, an unconfirmed fact) must be fixed; lines the
+ * fact-check flagged must be fixed or marked as checked by you; edits need a fresh fact-check.
+ */
+export function exportGate(cv: CvDoc, checks: CvChecks, base: ExperienceBase | null): string[] {
+  const out: string[] = [];
+  if (!base) return ["Your experience base is missing, so the CV cannot be checked."];
+  out.push(...hardDataIssues(cv, base));
+  const local = localChecks(cv, base).filter((i) => i.severity === "high");
+  if (local.length)
+    out.push(
+      `${local.length} ${local.length === 1 ? "line breaks" : "lines break"} a hard rule (no source, or a number not in your facts). Fix ${local.length === 1 ? "it" : "them"}.`,
+    );
+  const dismissed = new Set(checks.dismissed);
+  const flagged = checks.claude.filter((i) => i.severity === "high" && !dismissed.has(issueKey(i)));
+  if (flagged.length)
+    out.push(
+      `${flagged.length} ${flagged.length === 1 ? "line is" : "lines are"} flagged by the fact-check. Fix ${flagged.length === 1 ? "it" : "them"}, or mark as checked.`,
+    );
+  if (checks.failed) out.push("The fact-check did not finish. Run it again.");
+  else if (checks.stale) out.push("You edited the CV after the fact-check. Run the check again.");
+  else if (!checks.at && !checks.claude.length && !checks.local.length)
+    out.push("The fact-check has not run yet.");
+  return out;
+}
 
 /** The model's CV draft, with headers (employer, title, dates) filled in from the base, never from the model. */
 export function normalizeCv(

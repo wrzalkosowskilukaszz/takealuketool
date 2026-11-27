@@ -12,6 +12,7 @@ import {
   type CvIssue,
   cvPlainText,
   type ExperienceBase,
+  exportGate,
   fmtDate,
   getLine,
   issueKey,
@@ -232,6 +233,14 @@ export function VersionEditor({ initial }: { initial: CvVersion }) {
     />
   );
   const role = base?.roles.find((r) => r.id === (addFor !== null ? c.experience[addFor]?.role_id : ""));
+  // The final test before the CV leaves the app.
+  const blockers = base
+    ? [
+        ...(dirty ? ["Save your changes, then run the check again."] : []),
+        ...exportGate(c, checks.current, base),
+      ]
+    : ["Loading your experience base…"];
+  const blocked = blockers.length > 0;
 
   return (
     <div className="stack-lg">
@@ -243,6 +252,8 @@ export function VersionEditor({ initial }: { initial: CvVersion }) {
         <button
           type="button"
           className="btn"
+          disabled={blocked}
+          title={blocked ? "Pass the final check first" : undefined}
           onClick={async () => {
             await navigator.clipboard.writeText(cvPlainText(c));
             toast("CV text copied");
@@ -250,16 +261,46 @@ export function VersionEditor({ initial }: { initial: CvVersion }) {
         >
           <Copy size={14} /> Copy text
         </button>
-        <button type="button" className="btn" onClick={download}>
+        <button
+          type="button"
+          className="btn"
+          onClick={download}
+          disabled={blocked}
+          title={blocked ? "Pass the final check first" : undefined}
+        >
           <Download size={14} /> Word (.docx)
         </button>
-        <button type="button" className="btn" onClick={() => window.print()}>
+        <button
+          type="button"
+          className="btn"
+          onClick={() => window.print()}
+          disabled={blocked}
+          title={blocked ? "Pass the final check first" : undefined}
+        >
           <Printer size={14} /> PDF (print)
         </button>
         <button type="button" className="btn btn-quiet" onClick={reverify} disabled={busy !== null}>
           <RefreshCw size={14} /> {busy === "verify" ? "Checking…" : "Check again"}
         </button>
       </div>
+
+      {base ? (
+        blocked ? (
+          <Callout tone="bad">
+            <span>
+              <strong>Final check not passed yet.</strong> Copy, Word and PDF unlock when it passes:{" "}
+              {blockers.join(" ")}
+            </span>
+          </Callout>
+        ) : (
+          <Callout tone="info">
+            <span>
+              Final check passed: employers, titles, dates and contact details match your base, every line has
+              a confirmed source, and the fact-check found nothing open.
+            </span>
+          </Callout>
+        )
+      ) : null}
 
       <div className="cv-layout">
         <div className="stack cv-notes">
@@ -306,19 +347,25 @@ export function VersionEditor({ initial }: { initial: CvVersion }) {
                       </button>
                     </div>
                   ) : null}
-                  <div>
-                    <button
-                      type="button"
-                      className="btn btn-sm btn-quiet"
-                      onClick={() => {
-                        checks.current.dismissed.push(issueKey(i));
-                        checks.current.claude = checks.current.claude.filter((x) => x !== i);
-                        structural();
-                      }}
-                    >
-                      Mark as checked
-                    </button>
-                  </div>
+                  {i.by !== "claude" && i.severity === "high" ? (
+                    <div className="xsmall muted">
+                      A hard rule: edit the line (or remove it) to clear this.
+                    </div>
+                  ) : (
+                    <div>
+                      <button
+                        type="button"
+                        className="btn btn-sm btn-quiet"
+                        onClick={() => {
+                          checks.current.dismissed.push(issueKey(i));
+                          checks.current.claude = checks.current.claude.filter((x) => x !== i);
+                          structural();
+                        }}
+                      >
+                        Mark as checked
+                      </button>
+                    </div>
+                  )}
                 </div>
               );
             })}

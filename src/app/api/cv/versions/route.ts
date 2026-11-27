@@ -2,6 +2,9 @@ import { z } from "zod";
 import { createVersion, listVersions } from "@/server/cv/service";
 import { api, parseBody } from "@/server/http";
 
+// The first CV without a base builds the base from your uploaded CV: one Claude call.
+export const maxDuration = 300;
+
 export const GET = api(async () => ({ versions: await listVersions() }));
 
 /** Starts a new CV from a pasted posting. The steps then run one by one (…/step). */
