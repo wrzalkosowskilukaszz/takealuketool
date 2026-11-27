@@ -1,4 +1,5 @@
 import { eq } from "drizzle-orm";
+import { aiConfigured } from "@/server/ai/client";
 import { scoreOffer } from "@/server/ai/score";
 import { cvSourceText } from "@/server/cv/service";
 import { db } from "@/server/db/client";
@@ -9,6 +10,8 @@ export const maxDuration = 60;
 
 /** Asks Claude to read this one offer against the CV now, instead of waiting for the next tick. */
 export const POST = api<{ id: string }>(async (_req, { params }) => {
+  if (!aiConfigured())
+    throw badRequest("Claude is not connected yet, so the offer was saved without a score.");
   const [o] = await db()
     .select({
       id: jobOffers.id,

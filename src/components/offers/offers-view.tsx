@@ -816,6 +816,13 @@ function AddDialog({
         </>
       }
     >
+      <p className="small secondary">
+        Faster: add the{" "}
+        <a href="/save" target="_blank" rel="noopener">
+          Save to Studio
+        </a>{" "}
+        button to your bookmarks bar and save ads from any job site in one click.
+      </p>
       <label className="field">
         <span className="field-label">Link to the offer</span>
         <input
