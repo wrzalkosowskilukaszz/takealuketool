@@ -100,7 +100,8 @@ export async function runTick(opts: {
   }
 
   // 2. Offers: read due sources and look for job boards on company sites.
-  if (Date.now() < deadline - 60_000 && (await jobsWorkDue())) {
+  // With background work switched off (Settings → Offers in the background), no offers are read or scored.
+  if (sched.enabled && Date.now() < deadline - 60_000 && (await jobsWorkDue())) {
     if (await acquireLease("jobs", holder, Math.min(opts.budgetMs, 10 * 60_000))) {
       try {
         // Leave time for scoring when Claude is configured.
@@ -115,7 +116,7 @@ export async function runTick(opts: {
   }
 
   // 3. Claude reads the offers that passed the rules.
-  if (opts.scoring !== false && Date.now() < deadline - 30_000) {
+  if (sched.enabled && opts.scoring !== false && Date.now() < deadline - 30_000) {
     if (await acquireLease("scoring", holder, Math.min(opts.budgetMs, 10 * 60_000))) {
       try {
         report.scoring = await scoreDueOffers({ deadline });
