@@ -3,12 +3,14 @@ import { NewCv } from "@/components/cv/new-cv";
 import { allFacts } from "@/lib/cv/base";
 import { aiConfigured } from "@/server/ai/client";
 import { getBase } from "@/server/cv/service";
+import { getSettings } from "@/server/settings";
 
 export const metadata = { title: "CV" };
 export const dynamic = "force-dynamic";
 
 export default async function CvPage() {
   const base = await getBase();
+  const career = await getSettings("career");
   const facts = allFacts(base);
   const confirmed = facts.filter((f) => f.status === "confirmed").length;
   return (
@@ -25,6 +27,7 @@ export default async function CvPage() {
       <CvNav />
       <NewCv
         aiReady={aiConfigured()}
+        uploadedCv={career.cvText.trim() ? (career.cvFilename ?? "your CV") : null}
         baseSummary={base ? { roles: base.roles.length, confirmed, pending: facts.length - confirmed } : null}
       />
     </div>

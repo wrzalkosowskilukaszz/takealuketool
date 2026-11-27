@@ -5,8 +5,11 @@ import {
   cvModel,
   cvPlainText,
   ExperienceBase,
+  exportGate,
   fmtDate,
+  hardDataIssues,
   localChecks,
+  lockHardData,
   normalizeCv,
   sortedRoles,
 } from "./base";
@@ -138,5 +141,58 @@ describe("CV drafts", () => {
     expect(text).toContain("Creative Lead — UNICEF Poland | 05.2023 – present");
     expect(text).toContain("DOŚWIADCZENIE");
     expect(cvModel(cv).contact).toBe("l@example.com");
+  });
+});
+
+describe("final check before export", () => {
+  const good = () =>
+    normalizeCv(
+      {
+        experience: [
+          { role_id: "r_new", bullets: [{ text: "Led the creative team.", fact_ids: ["f2"] }] },
+          { role_id: "r_old", bullets: [{ text: "Designed campaigns for 17 markets.", fact_ids: ["f1"] }] },
+        ],
+      },
+      base,
+    );
+  const clean = { local: [], claude: [], language_notes: [], dismissed: [], at: "2026-11-27T00:00:00Z" };
+
+  it("passes a sourced CV with unchanged hard data", () => {
+    expect(exportGate(good(), clean, base)).toEqual([]);
+  });
+
+  it("blocks changed employers, dates and contact details, and lockHardData restores them", () => {
+    const cv = good();
+    cv.experience[0]!.company = "Meta";
+    cv.experience[1]!.start = "2018-01";
+    cv.personal.email = "other@example.com";
+    expect(hardDataIssues(cv, base)).toHaveLength(3);
+    expect(exportGate(cv, clean, base).length).toBeGreaterThan(0);
+    expect(hardDataIssues(lockHardData(cv, base), base)).toEqual([]);
+  });
+
+  it("blocks a number that is not in the cited facts", () => {
+    const cv = good();
+    cv.experience[1]!.bullets[0]!.text = "Designed campaigns for 25 markets.";
+    expect(exportGate(cv, clean, base).join(" ")).toMatch(/hard rule/);
+  });
+
+  it("blocks open fact-check flags until marked as checked, and stale checks", () => {
+    const issue = {
+      path: "experience.0.bullets.0",
+      severity: "high" as const,
+      problem: "Overstated",
+      suggestion: "",
+      by: "claude",
+    };
+    expect(exportGate(good(), { ...clean, claude: [issue] }, base)).toHaveLength(1);
+    expect(
+      exportGate(
+        good(),
+        { ...clean, claude: [issue], dismissed: ["experience.0.bullets.0|Overstated"] },
+        base,
+      ),
+    ).toEqual([]);
+    expect(exportGate(good(), { ...clean, stale: true }, base)).toHaveLength(1);
   });
 });
