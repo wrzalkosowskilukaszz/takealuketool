@@ -192,6 +192,15 @@ export function NewCv({
             <span>Claude is not set up yet. Add ANTHROPIC_API_KEY in Vercel to write CVs.</span>
           </Callout>
         ) : null}
+        {aiReady && !baseSummary ? (
+          <Callout tone="bad">
+            <span>
+              The button stays off until your experience base is loaded: CVs are written only from its facts.{" "}
+              <Link href="/cv/base">Open Experience base</Link> and use Import JSON (the Kreator export works
+              as it is).
+            </span>
+          </Callout>
+        ) : null}
         <div className="btn-group">
           <button
             type="button"
