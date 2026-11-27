@@ -3,6 +3,7 @@ import { NextResponse } from "next/server";
 import { ZodError, type z } from "zod";
 import { assertApiSession, UnauthorizedError } from "./auth/session.ts";
 import { logEvent } from "./events.ts";
+import { BudgetExceededError } from "./jobs/budget.ts";
 
 export class HttpError extends Error {
   constructor(
@@ -39,6 +40,13 @@ export function api<P = Record<string, never>>(
 
 export function errorResponse(err: unknown): Response {
   if (err instanceof UnauthorizedError) return NextResponse.json({ error: "Not signed in" }, { status: 401 });
+  if (err instanceof BudgetExceededError)
+    return NextResponse.json(
+      {
+        error: `${err.message}. Raise the limit in Settings → AI spending, or wait for the next ${err.scope === "daily" ? "day" : "month"}.`,
+      },
+      { status: 429 },
+    );
   if (err instanceof HttpError)
     return NextResponse.json({ error: err.message, details: err.details }, { status: err.status });
   if (err instanceof ZodError) {
