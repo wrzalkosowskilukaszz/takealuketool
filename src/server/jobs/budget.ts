@@ -18,6 +18,20 @@ export class BudgetExceededError extends Error {
   }
 }
 
+/**
+ * Committed usage, plus reservations of calls that may still be running. A reservation older than
+ * 30 minutes belongs to a call that was cut off (e.g. a function timeout) and never released, so it no
+ * longer counts against the limits.
+ */
+const LIVE_USAGE = sql`(${providerUsage.status} = 'committed' or (${providerUsage.status} = 'reserved' and ${providerUsage.createdAt} > now() - interval '30 minutes'))`;
+
+/**
+ * Background work (scoring offers) may use only this share of each limit, so what you start yourself,
+ * such as writing a CV, always has room left.
+ */
+const BACKGROUND_SHARE = 0.8;
+const BACKGROUND_OPS = new Set(["score"]);
+
 /** For "anthropic" a credit is 1,000 tokens, priced from the usdPerMillionTokens setting. */
 function usdPerCredit(provider: string, s: { usdPerMillionTokens: number }): number {
   return provider === "anthropic" ? s.usdPerMillionTokens / 1000 : 0;
@@ -59,12 +73,7 @@ export async function spendSummary() {
       monthCredits: sql<number>`coalesce(sum(${providerUsage.credits}), 0)::float8`,
     })
     .from(providerUsage)
-    .where(
-      and(
-        sql`${providerUsage.createdAt} >= ${month}::timestamptz`,
-        sql`${providerUsage.status} in ('reserved','committed')`,
-      ),
-    )
+    .where(and(sql`${providerUsage.createdAt} >= ${month}::timestamptz`, LIVE_USAGE))
     .groupBy(providerUsage.provider);
   const total = rows.reduce(
     (a, r) => ({ day: a.day + Number(r.dayMicros), month: a.month + Number(r.monthMicros) }),
@@ -103,24 +112,20 @@ export async function reserve(opts: {
         month: sql<number>`coalesce(sum(${providerUsage.costMicros}), 0)::bigint`,
       })
       .from(providerUsage)
-      .where(
-        and(
-          sql`${providerUsage.createdAt} >= ${month}::timestamptz`,
-          sql`${providerUsage.status} in ('reserved','committed')`,
-        ),
-      );
+      .where(and(sql`${providerUsage.createdAt} >= ${month}::timestamptz`, LIVE_USAGE));
     const dayMicros = Number(agg?.day ?? 0);
     const monthMicros = Number(agg?.month ?? 0);
-    if (dayMicros + costMicros > settings.dailySpendLimitUsd * 1e6) {
+    const share = BACKGROUND_OPS.has(opts.operation) ? BACKGROUND_SHARE : 1;
+    if (dayMicros + costMicros > settings.dailySpendLimitUsd * share * 1e6) {
       throw new BudgetExceededError(
         "daily",
-        `Daily AI spending limit ($${settings.dailySpendLimitUsd}) reached`,
+        `Daily AI spending limit ($${settings.dailySpendLimitUsd}) reached${share < 1 ? " for background scoring" : ""}`,
       );
     }
-    if (monthMicros + costMicros > settings.monthlySpendLimitUsd * 1e6) {
+    if (monthMicros + costMicros > settings.monthlySpendLimitUsd * share * 1e6) {
       throw new BudgetExceededError(
         "monthly",
-        `Monthly AI spending limit ($${settings.monthlySpendLimitUsd}) reached`,
+        `Monthly AI spending limit ($${settings.monthlySpendLimitUsd}) reached${share < 1 ? " for background scoring" : ""}`,
       );
     }
     const [row] = await tx

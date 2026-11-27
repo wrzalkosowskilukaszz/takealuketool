@@ -168,8 +168,8 @@ export function SettingsView() {
         />
         <SettingsForm<"scheduler">
           id="schedule"
-          title="Daily refresh"
-          lead="Once a day every job board is read again, so the morning digest is fresh. Company pages and Claude's scoring run through the day as well."
+          title="Offers in the background"
+          lead="When on, job boards are read again every day and Claude scores new offers through the day, which uses the AI spending limit. When off, nothing runs in the background and the limit is left for what you start yourself, such as writing a CV."
           settingsKey="scheduler"
           render={(v, set) => (
             <div className="field-row">
@@ -180,7 +180,7 @@ export function SettingsView() {
                   checked={v.enabled}
                   onChange={(e) => set({ ...v, enabled: e.target.checked })}
                 />
-                Refresh every day
+                Read and score new offers
               </label>
               <label className="field">
                 <span className="field-label">At (Warsaw time)</span>
